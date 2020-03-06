@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/solvedLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_gravity="top|center"
+    android:background="@drawable/bdoku_round_layout">
+
+    <TextView
+        android:id="@+id/solvedText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:background="@color/bdoku_faded_blue"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:text="@string/solvedPopupText"
+        android:textColor="@color/majorBoardGridLinesColor"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/gameTime_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/solvedText"
+        android:background="@drawable/bdoku_btn"
+        android:enabled="false"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/solvOkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameTime_button"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bdoku_btn"
+        android:fontFamily="@font/alfa_slab_one"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/okButtonText"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+</RelativeLayout>

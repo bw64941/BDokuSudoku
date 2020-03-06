@@ -1,0 +1,59 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .DS_Store
+* market_images/
+* market_images/BDokuFriends_screenshot_2.png
+* market_images/BDokuGamePost.png
+* market_images/BDokuHouaseAd.png
+* market_images/BDokuHouaseAd_Flat.png
+* market_images/b-doku_friends_web.png
+* market_images/bdokuFriendScreenshot_1.png
+* market_images/bdokuFriends.png
+* market_images/bdokuFriends_flat.png
+* market_images/bdoku_friends_splash_screenshot.png
+* market_images/featureGraphic_friends.png
+* market_images/featureGraphic_friends_24.png
+* market_images/promo_graphic_friends.png
+* market_images/promo_graphic_friends_24.png
+* market_images/splash_board.png
+* market_images/splash_board_flat.png
+* proguard.cfg
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets
+* libs/GoogleAdMobAdsSdk-6.2.1.jar => app/libs/GoogleAdMobAdsSdk-6.2.1.jar
+* lint.xml => app/lint.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+* src/.DS_Store => app/src/main/resources/.DS_Store
+* src/com/.DS_Store => app/src/main/resources/com/.DS_Store
+* src/com/ironbrand/.DS_Store => app/src/main/resources/com/ironbrand/.DS_Store
+* src/com/ironbrand/bdoku/.DS_Store => app/src/main/resources/com/ironbrand/bdoku/.DS_Store
+* src/com/ironbrand/model/.DS_Store => app/src/main/resources/com/ironbrand/model/.DS_Store
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

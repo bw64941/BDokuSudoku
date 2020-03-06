@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- <color name="boardBackGroundColor_white">#77708090</color> -->
+    <color name="white">#FFFFFF</color>
+    <color name="majorBoardGridLinesColor">#4663AC</color>
+    <color name="systemValueColor">#000000</color>
+    <color name="pencilValueColor">#FF0000cd</color>
+    <color name="highlightColor">#44ffd700</color>
+    <color name="errorHighlightColor">#aaff0000</color>
+    <color name="userPlacedValueColor">#FF0000cd</color>
+    <color name="bdoku_light_blue">#C1D8F0</color>
+    <color name="bdoku_faded_blue">#d2deeb</color>
+    <color name="bdoku_dark_blue">#052869</color>
+</resources>

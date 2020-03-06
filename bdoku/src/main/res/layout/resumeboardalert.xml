@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top|center"
+    android:background="@drawable/bdoku_round_layout"
+    android:clipChildren="true"
+    android:clipToPadding="true">
+
+    <TextView
+        android:id="@+id/resumeAlertTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@color/bdoku_faded_blue"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:paddingBottom="20dip"
+        android:text="@string/openSavedBoardText"
+        android:textColor="@color/majorBoardGridLinesColor"
+        android:textSize="30sp" />
+
+    <RelativeLayout
+        android:id="@+id/yOrNoPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resumeAlertTextBox"
+        android:layout_centerHorizontal="true"
+        android:background="@color/bdoku_faded_blue"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/resumeNo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/resumeGameNoButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/resumeYes"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/resumeNo"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/resumeGameYesButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yOrNoPanel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bdoku_btn"
+        android:fontFamily="@font/alfa_slab_one"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/resumeGameDeleteButtonText"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

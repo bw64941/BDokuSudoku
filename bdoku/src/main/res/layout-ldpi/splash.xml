@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splashLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@color/majorBoardGridLinesColor"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/splashImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/clearButtonText"
+        android:src="@drawable/splash_board" />
+
+    <RelativeLayout
+        android:id="@+id/splashButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bdoku_faded_blue">
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/popup_top_frame"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/new_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/newGameButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/about_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/new_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/aboutButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/exit_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/exitButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/exit_button"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="3dp"
+            android:layout_toStartOf="@+id/exit_button"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/company"
+            android:textColor="@color/majorBoardGridLinesColor"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/versionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/exit_button"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="3dp"
+            android:layout_toEndOf="@+id/exit_button"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/version"
+            android:textAlignment="textEnd"
+            android:textColor="@color/majorBoardGridLinesColor"
+            android:textSize="8sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

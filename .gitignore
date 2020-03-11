@@ -7,3 +7,5 @@
 build/
 .gradle/
 bdoku/build/
+bdoku/bdoku.iml
+gradlew.bat

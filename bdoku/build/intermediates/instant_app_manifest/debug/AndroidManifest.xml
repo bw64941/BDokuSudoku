@@ -24,8 +24,7 @@
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@drawable/bdoku_launcher"
         android:label="@string/applicationName"
-        android:supportsRtl="true"
-        android:testOnly="true" >
+        android:supportsRtl="true" >
         <activity android:name="com.ironbrand.controller.BoardActivity" />
         <activity
             android:name="com.ironbrand.controller.AboutActivity"

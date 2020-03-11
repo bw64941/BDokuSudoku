@@ -23,15 +23,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdoku/bdoku.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bdoku/bdoku.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdoku/build/outputs/apk/debug/bdoku-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bdoku/build/outputs/apk/debug/bdoku-debug.apk" afterDir="false" />
     </list>
     <ignored path="build/" />
     <ignored path="gradle/" />
     <ignored path="bdoku/build/" />
+    <ignored path=".idea/" />
     <manually-removed-from-ignored>
       <directory path=".gradle/" />
-      <directory path=".idea/" />
     </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -287,6 +287,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BDokuFriends" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bdoku" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -299,17 +310,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="BDokuFriends" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bdoku" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Non-Source Files'; set:Project Non-Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$NonSourceFilesScope">
           <expand>
@@ -325,6 +325,16 @@
             <path>
               <item name="BDokuSudoku" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/StudioProjects/BDokuSudoku" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="BDokuSudoku" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/StudioProjects/BDokuSudoku" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BDokuSudoku" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/StudioProjects/BDokuSudoku" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="build" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -674,7 +684,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583949015690</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Rename of Project Folder">
+      <created>1583949227029</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1583949227029</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Rename of Project Folder">
+      <created>1583956842024</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1583956842024</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -700,15 +724,15 @@
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Dependency Viewer" order="0" sideWeight="0.49980134" weight="0.533737" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49352178" weight="0.32439446" />
-      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.7022241" visible="true" weight="0.26557094" />
+      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.7018122" weight="0.26557094" />
       <window_info anchor="bottom" id="TODO" order="3" sideWeight="0.49940404" weight="0.32921448" />
       <window_info anchor="bottom" id="Find" order="4" sideWeight="0.489011" weight="0.46885812" />
       <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49900675" weight="0.32871974" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.29777595" side_tool="true" visible="true" weight="0.26557094" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.41021416" side_tool="true" visible="true" weight="0.51557094" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.63138384" weight="0.32871974" />
-      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.5901977" weight="0.51557094" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.5897858" visible="true" weight="0.51557094" />
       <window_info anchor="bottom" id="Debug" order="9" sideWeight="0.64407814" weight="0.32807216" />
-      <window_info anchor="bottom" id="Android Profiler" order="10" sideWeight="0.62637365" weight="0.9653979" />
+      <window_info anchor="bottom" id="Android Profiler" order="10" show_stripe_button="false" sideWeight="0.62637365" weight="0.9653979" />
       <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.5704283" weight="0.32785466" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32919955" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32967034" />
@@ -1126,12 +1150,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdoku/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/web_hi_res_512 copy.png">
       <provider selected="true" editor-type-id="images" />
@@ -1191,8 +1215,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz.xml",
+            "outputFile": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/res/values-uz/values.xml",

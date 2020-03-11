@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/res/values/values.xml",
@@ -20,25 +20,6 @@
                         "endLines": "160,181",
                         "endColumns": "8,20",
                         "endOffsets": "12740,13654"
-                    }
-                },
-                {
-                    "source": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "42,7,6,57,34,3,37,43,25,16,20,23,17,41,19,52,58,18,24,40,47,10,31,13,12,11,51,50,48,28,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2160,198,149,2800,1894,56,1976,2210,1628,1196,1417,1499,1260,2112,1366,2539,2880,1311,1563,2062,2327,926,1810,1096,1042,986,2487,2432,2371,1737,2287",
-                        "endLines": "42,8,6,57,34,3,37,43,25,16,20,23,17,41,19,52,58,18,24,40,47,10,31,13,12,11,51,50,48,28,46",
-                        "endColumns": "49,416,48,79,45,57,49,54,80,63,49,63,50,47,50,49,90,54,64,49,43,59,47,61,53,55,51,54,59,42,39",
-                        "endOffsets": "2205,881,193,2875,1935,109,2021,2260,1704,1255,1462,1558,1306,2155,1412,2584,2966,1361,1623,2107,2366,981,1853,1153,1091,1037,2534,2482,2426,1775,2322"
-                    },
-                    "to": {
-                        "startLines": "74,75,77,78,79,80,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,109,110,111,113,114",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "7062,7112,7800,7849,7929,7975,8033,8250,8305,8386,8450,8500,8564,8615,8663,8714,8764,8855,8910,8975,9025,9069,9129,9177,9239,9293,9705,9757,9812,9943,9986",
-                        "endLines": "74,76,77,78,79,80,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,109,110,111,113,114",
-                        "endColumns": "49,416,48,79,45,57,49,54,80,63,49,63,50,47,50,49,90,54,64,49,43,59,47,61,53,55,51,54,59,42,39",
-                        "endOffsets": "7107,7795,7844,7924,7970,8028,8078,8300,8381,8445,8495,8559,8610,8658,8709,8759,8850,8905,8970,9020,9064,9124,9172,9234,9288,9344,9752,9807,9867,9981,10021"
                     }
                 },
                 {
@@ -114,26 +95,26 @@
                     }
                 },
                 {
-                    "source": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/res/values/font_certs.xml",
+                    "source": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "2,6,11",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,257,1982",
-                        "endLines": "5,10,15",
-                        "endColumns": "12,19,19",
-                        "endOffsets": "252,1977,3567"
+                        "startLines": "42,7,6,57,34,3,37,43,25,16,20,23,17,41,19,52,58,18,24,40,47,10,31,13,12,11,51,50,48,28,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2160,198,149,2800,1894,56,1976,2210,1628,1196,1417,1499,1260,2112,1366,2539,2880,1311,1563,2062,2327,926,1810,1096,1042,986,2487,2432,2371,1737,2287",
+                        "endLines": "42,8,6,57,34,3,37,43,25,16,20,23,17,41,19,52,58,18,24,40,47,10,31,13,12,11,51,50,48,28,46",
+                        "endColumns": "49,416,48,79,45,57,49,54,80,63,49,63,50,47,50,49,90,54,64,49,43,59,47,61,53,55,51,54,59,42,39",
+                        "endOffsets": "2205,881,193,2875,1935,109,2021,2260,1704,1255,1462,1558,1306,2155,1412,2584,2966,1361,1623,2107,2366,981,1853,1153,1091,1037,2534,2482,2426,1775,2322"
                     },
                     "to": {
-                        "startLines": "2,6,11",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "105,307,2032",
-                        "endLines": "5,10,15",
-                        "endColumns": "12,19,19",
-                        "endOffsets": "302,2027,3617"
+                        "startLines": "74,75,77,78,79,80,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,109,110,111,113,114",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "7062,7112,7800,7849,7929,7975,8033,8250,8305,8386,8450,8500,8564,8615,8663,8714,8764,8855,8910,8975,9025,9069,9129,9177,9239,9293,9705,9757,9812,9943,9986",
+                        "endLines": "74,76,77,78,79,80,81,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,109,110,111,113,114",
+                        "endColumns": "49,416,48,79,45,57,49,54,80,63,49,63,50,47,50,49,90,54,64,49,43,59,47,61,53,55,51,54,59,42,39",
+                        "endOffsets": "7107,7795,7844,7924,7970,8028,8078,8300,8381,8445,8495,8559,8610,8658,8709,8759,8850,8905,8970,9020,9064,9124,9172,9234,9288,9344,9752,9807,9867,9981,10021"
                     }
                 },
                 {
-                    "source": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/res/values/preloaded_fonts.xml",
+                    "source": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/src/main/res/values/preloaded_fonts.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -169,7 +150,26 @@
                     }
                 },
                 {
-                    "source": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/res/values/colors.xml",
+                    "source": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/src/main/res/values/font_certs.xml",
+                    "from": {
+                        "startLines": "2,6,11",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,257,1982",
+                        "endLines": "5,10,15",
+                        "endColumns": "12,19,19",
+                        "endOffsets": "252,1977,3567"
+                    },
+                    "to": {
+                        "startLines": "2,6,11",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "105,307,2032",
+                        "endLines": "5,10,15",
+                        "endColumns": "12,19,19",
+                        "endOffsets": "302,2027,3617"
+                    }
+                },
+                {
+                    "source": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/src/main/res/values/colors.xml",
                     "from": {
                         "startLines": "13,12,11,9,8,5,7,6,10,4",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -186,7 +186,7 @@
                     }
                 },
                 {
-                    "source": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/res/values/styles.xml",
+                    "source": "/Users/bwinters/StudioProjects/BDokuSudoku/bdoku/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,6,8,13,18,24,26,31,36,41",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

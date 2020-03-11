@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BDokuFriends.iml" filepath="$PROJECT_DIR$/BDokuFriends.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BDokuSudoku.iml" filepath="$PROJECT_DIR$/BDokuSudoku.iml" />
       <module fileurl="file://$PROJECT_DIR$/bdoku/bdoku.iml" filepath="$PROJECT_DIR$/bdoku/bdoku.iml" />
     </modules>
   </component>

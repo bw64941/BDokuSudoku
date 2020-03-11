@@ -16,6 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cd605a2-effe-4413-8c01-e635298585f4" name="Default Changelist" comment="Rename of Project Folder">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,7 +24,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdoku/build/outputs/apk/debug/bdoku-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bdoku/build/outputs/apk/debug/bdoku-debug.apk" afterDir="false" />
     </list>
     <ignored path="build/" />
@@ -131,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="120">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -698,7 +698,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583956842024</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Rename of Project Folder">
+      <created>1583956959502</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1583956959502</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Rename of Project Folder">
+      <created>1583957071088</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1583957071088</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -712,9 +726,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3065" y="23" width="2470" height="1248" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.2581736" side_tool="true" weight="0.25152627" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.74182636" visible="true" weight="0.12602966" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.74182636" visible="true" weight="0.12602966" />
       <window_info id="Structure" order="2" sideWeight="0.50119907" side_tool="true" weight="0.1911833" />
       <window_info id="Favorites" order="3" sideWeight="0.50119907" side_tool="true" weight="0.1911833" />
       <window_info id="Build Variants" order="4" sideWeight="0.50119907" side_tool="true" weight="0.1911833" />
@@ -728,7 +743,7 @@
       <window_info anchor="bottom" id="TODO" order="3" sideWeight="0.49940404" weight="0.32921448" />
       <window_info anchor="bottom" id="Find" order="4" sideWeight="0.489011" weight="0.46885812" />
       <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49900675" weight="0.32871974" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.41021416" side_tool="true" visible="true" weight="0.51557094" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="6" sideWeight="0.41021416" side_tool="true" visible="true" weight="0.51557094" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.63138384" weight="0.32871974" />
       <window_info anchor="bottom" id="Build" order="8" sideWeight="0.5897858" visible="true" weight="0.51557094" />
       <window_info anchor="bottom" id="Debug" order="9" sideWeight="0.64407814" weight="0.32807216" />
@@ -1215,8 +1230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="120">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
         </state>
       </provider>
     </entry>

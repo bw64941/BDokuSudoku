@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import androidx.annotation.Nullable;
+
 import com.ironbrand.bdokusudoku.R;
 
 import java.util.ArrayList;
@@ -27,16 +30,15 @@ import java.util.ArrayList;
  *
  * @author Yuki Anzai
  */
-public class QuickAction extends PopupWindowForQuickAction {
-    public static final int STYLE_BUTTON = 1;
-    public static final int STYLE_TOGGLE = 3;
-    public static final int ANIM_GROW_FROM_LEFT = 1;
-    public static final int ANIM_GROW_FROM_RIGHT = 2;
-    public static final int ANIM_GROW_FROM_CENTER = 3;
+class QuickAction extends PopupWindowForQuickAction {
+    static final int STYLE_TOGGLE = 3;
+    private static final int STYLE_BUTTON = 1;
+    private static final int ANIM_GROW_FROM_LEFT = 1;
+    private static final int ANIM_GROW_FROM_RIGHT = 2;
+    private static final int ANIM_GROW_FROM_CENTER = 3;
     public static final int ANIM_REFLECT = 4;
     public static final int ANIM_AUTO = 5;
     private final LayoutInflater inflater;
-    private final Context context;
     private View rootView;
     private Animation mTrackAnim;
     private int itemLayoutId;
@@ -46,21 +48,21 @@ public class QuickAction extends PopupWindowForQuickAction {
     private boolean animateTrack;
     private ViewGroup mTrack;
 
-    private ArrayList<ActionItem> actionList;
-    private ArrayList<ToggleItem> toggleList;
+    private final ArrayList<ActionItem> actionList;
+    private final ArrayList<ToggleItem> toggleList;
 
     /**
      * Constructor
      *
      * @param anchor {@link View} on where the popup should be displayed
      */
-    public QuickAction(View anchor, int layoutId, int layoutStyle, int itemLayoutId) {
+    QuickAction(@Nullable View anchor, int layoutId, int layoutStyle, int itemLayoutId) {
         super(anchor);
 
-        actionList = new ArrayList<ActionItem>();
-        toggleList = new ArrayList<ToggleItem>();
+        actionList = new ArrayList<>();
+        toggleList = new ArrayList<>();
 
-        context = anchor.getContext();
+        Context context = anchor.getContext();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (itemLayoutId == -1) {
@@ -81,7 +83,7 @@ public class QuickAction extends PopupWindowForQuickAction {
 
         setLayoutId(layoutId, layoutStyle);
 
-        animStyle = ANIM_AUTO;
+        animStyle = ANIM_GROW_FROM_CENTER;
 
         // for button style
         setAnimTrack(R.anim.rail, new Interpolator() {
@@ -100,7 +102,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param anchor {@link View} on where the popup should be displayed
      */
-    public QuickAction(View anchor, int layoutId, int layoutStyle) {
+    public QuickAction(@Nullable View anchor, int layoutId, int layoutStyle) {
         this(anchor, layoutId, layoutStyle, -1);
     }
 
@@ -109,7 +111,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param anchor {@link View} on where the popup should be displayed
      */
-    public QuickAction(View anchor) {
+    QuickAction(@Nullable View anchor) {
         this(anchor, R.layout.quickaction, STYLE_BUTTON, R.layout.user_value_btn);
     }
 
@@ -118,7 +120,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param animateTrack flag to animate track
      */
-    public void setAnimTrackEnabled(boolean animateTrack) {
+    private void setAnimTrackEnabled(boolean animateTrack) {
         this.animateTrack = animateTrack;
     }
 
@@ -128,7 +130,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      * @param animId       resource id of animation
      * @param interpolator interpolator of animation
      */
-    public void setAnimTrack(int animId, Interpolator interpolator) {
+    private void setAnimTrack(int animId, @Nullable Interpolator interpolator) {
         mTrackAnim = AnimationUtils.loadAnimation(anchor.getContext(), animId);
         if (interpolator != null)
             mTrackAnim.setInterpolator(interpolator);
@@ -137,7 +139,7 @@ public class QuickAction extends PopupWindowForQuickAction {
     /**
      * Set animation style
      *
-     * @param animStyle animation style, default is set to ANIM_AUTO
+     * @param animStyle animation style
      */
     public void setAnimStyle(int animStyle) {
         this.animStyle = animStyle;
@@ -155,7 +157,6 @@ public class QuickAction extends PopupWindowForQuickAction {
                 break;
             case STYLE_BUTTON:
             default:
-                setLayoutId(R.layout.quickaction, layoutStyle);
                 break;
         }
     }
@@ -165,7 +166,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param layoutStyle layout style, default is set to STYLE_BUTTON
      */
-    public void setLayoutId(int layoutId, int layoutStyle) {
+    private void setLayoutId(int layoutId, int layoutStyle) {
         this.layoutStyle = layoutStyle;
 
         rootView = inflater.inflate(layoutId, null);
@@ -179,7 +180,6 @@ public class QuickAction extends PopupWindowForQuickAction {
                 break;
             case STYLE_BUTTON:
             default:
-                setAnimTrackEnabled(true);
                 break;
         }
     }
@@ -193,7 +193,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param action {@link ActionItem}
      */
-    public void addActionItem(ActionItem action) {
+    void addActionItem(@Nullable ActionItem action) {
         actionList.add(action);
     }
 
@@ -202,7 +202,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param action {@link ActionItem}
      */
-    public void addToggleItem(ToggleItem action) {
+    void addToggleItem(@Nullable ToggleItem action) {
         toggleList.add(action);
     }
 
@@ -239,8 +239,9 @@ public class QuickAction extends PopupWindowForQuickAction {
         int rootWidth = rootView.getMeasuredWidth();
         int rootHeight = rootView.getMeasuredHeight();
 
-        int screenWidth = windowManager.getDefaultDisplay().getWidth();
-        // int screenHeight = windowManager.getDefaultDisplay().getHeight();
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displaymetrics);
+        int screenWidth = displaymetrics.widthPixels;
 
         int xPos = (screenWidth - rootWidth) / 2;
         int yPos = anchorRect.bottom;
@@ -278,7 +279,9 @@ public class QuickAction extends PopupWindowForQuickAction {
         int rootWidth = rootView.getMeasuredWidth();
         int rootHeight = rootView.getMeasuredHeight();
 
-        int screenWidth = windowManager.getDefaultDisplay().getWidth();
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displaymetrics);
+        int screenWidth = displaymetrics.widthPixels;
 
         int xPos = (screenWidth - rootWidth) / 2;
         int yPos = anchorRect.bottom;
@@ -317,10 +320,6 @@ public class QuickAction extends PopupWindowForQuickAction {
                 break;
 
             case ANIM_GROW_FROM_CENTER:
-                window.setAnimationStyle((isOnTop) ? R.style.Animations_PopUpMenu_Center : R.style.Animations_PopDownMenu_Center);
-                break;
-
-            case ANIM_AUTO:
                 window.setAnimationStyle((isOnTop) ? R.style.Animations_PopUpMenu_Center : R.style.Animations_PopDownMenu_Center);
                 break;
         }
@@ -409,7 +408,7 @@ public class QuickAction extends PopupWindowForQuickAction {
      *
      * @param title    action item title
      * @param icon     {@link Drawable} action item icon
-     * @param listener {@link View.OnCheckedChangeListener} action item listener
+     * @param listener {@link OnCheckedChangeListener} action item listener
      * @return action item {@link View}
      */
     private View getToggleItem(String title, Drawable icon, boolean checked, OnCheckedChangeListener listener) {
@@ -421,7 +420,7 @@ public class QuickAction extends PopupWindowForQuickAction {
             toggle.setTextOn(title);
             toggle.setTextOff(title);
             toggle.setChecked(checked);
-            if (checked == true) {
+            if (checked) {
                 toggle.setTextColor(Color.BLACK);
             }
         } else {

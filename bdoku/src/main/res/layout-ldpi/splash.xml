@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/splashLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:background="@color/majorBoardGridLinesColor"
     android:gravity="center">
 
     <ImageView
         android:id="@+id/splashImage"
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="175dp"
+        android:layout_margin="5dp"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/clearButtonText"
         android:src="@drawable/splash_board" />
+
+    <TextView
+        android:id="@+id/splashNameLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/splashImage"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/bdoku_btn"
+        android:fontFamily="@font/alfa_slab_one"
+        android:padding="15dp"
+        android:text="@string/applicationName"
+        android:textColor="@color/bdoku_light_blue"
+        android:textSize="20sp" />
 
     <RelativeLayout
         android:id="@+id/splashButtonLayout"
@@ -21,19 +34,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/bdoku_faded_blue">
-
-        <LinearLayout
-            android:id="@+id/footer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/popup_top_frame"
-            android:orientation="vertical" />
+        android:background="@color/bdoku_light_blue">
 
         <Button
             android:id="@+id/new_button"
-            android:layout_width="200dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
@@ -46,7 +51,7 @@
 
         <Button
             android:id="@+id/about_button"
-            android:layout_width="200dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/new_button"
             android:layout_centerHorizontal="true"
@@ -59,7 +64,7 @@
 
         <Button
             android:id="@+id/exit_button"
-            android:layout_width="200dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/about_button"
             android:layout_centerHorizontal="true"
@@ -74,27 +79,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/exit_button"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="1dp"
             android:layout_marginBottom="3dp"
             android:layout_toStartOf="@+id/exit_button"
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/company"
             android:textColor="@color/majorBoardGridLinesColor"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/versionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/exit_button"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="40dp"
             android:layout_marginBottom="3dp"
             android:layout_toEndOf="@+id/exit_button"
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/version"
             android:textAlignment="textEnd"
             android:textColor="@color/majorBoardGridLinesColor"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
     </RelativeLayout>
 
 </RelativeLayout>

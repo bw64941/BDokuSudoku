@@ -17,28 +17,26 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:allowBackup="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@drawable/bdoku_launcher"
-        android:label="@string/applicationName" >
-        <activity
-            android:name="com.ironbrand.controller.BoardActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sudoku.Board" />
+        android:label="@string/applicationName"
+        android:supportsRtl="true"
+        android:testOnly="true" >
+        <activity android:name="com.ironbrand.controller.BoardActivity" />
         <activity
             android:name="com.ironbrand.controller.AboutActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Sudoku.Dialog" />
         <activity
             android:name="com.ironbrand.controller.ResumeBoardActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Sudoku.Dialog" />
         <activity
             android:name="com.ironbrand.controller.DifficultyChooserActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Sudoku.Dialog" />
         <activity
             android:name="com.ironbrand.controller.RestartActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Sudoku.Dialog" />
 
         <meta-data
@@ -48,9 +46,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
 
-        <activity
-            android:name="com.ironbrand.controller.AndokuActivity"
-            android:theme="@style/Theme.Sudoku.Splash" >
+        <activity android:name="com.ironbrand.controller.BDokuSudoku" >
             <intent-filter android:label="@string/applicationName" >
                 <action android:name="android.intent.action.VIEW" />
 
@@ -70,10 +66,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="android.support.VERSION"
-            android:value="26.1.0" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+        <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
@@ -89,9 +82,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="android.arch.lifecycle.VERSION"
-            android:value="27.0.0-SNAPSHOT" />
     </application>
 
 </manifest>

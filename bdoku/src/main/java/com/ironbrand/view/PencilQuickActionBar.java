@@ -1,12 +1,11 @@
-/**
- *
- */
 package com.ironbrand.view;
 
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.PopupWindow.OnDismissListener;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.R;
@@ -20,10 +19,10 @@ import java.util.ArrayList;
 public class PencilQuickActionBar extends QuickAction implements OnDismissListener {
 
     private final ArrayList<Integer> pencilValues;
-    private ArrayList<ToggleItem> valuesArray = new ArrayList<ToggleItem>();
-    private ToggleItem allActionItem = new ToggleItem();
+    private final ArrayList<ToggleItem> valuesArray = new ArrayList<>();
+    private final ToggleItem allActionItem = new ToggleItem();
 
-    public PencilQuickActionBar(View anchor, ArrayList<Integer> userPencilValues) {
+    public PencilQuickActionBar(@Nullable View anchor, @Nullable ArrayList<Integer> userPencilValues) {
         super(anchor, R.layout.quickaction, STYLE_TOGGLE, R.layout.user_pencil_btn);
         this.pencilValues = userPencilValues;
         obtainPencilButtons();
@@ -37,7 +36,7 @@ public class PencilQuickActionBar extends QuickAction implements OnDismissListen
         for (int i = 1; i <= Board.ROWS; i++) {
             final ToggleItem item = new ToggleItem();
             item.setTitle(String.valueOf(i));
-            if (pencilValues.contains(new Integer(i))) {
+            if (pencilValues.contains(i)) {
                 item.setChecked(true);
             }
             valuesArray.add(item);

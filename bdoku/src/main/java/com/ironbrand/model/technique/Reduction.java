@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.technique;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.Cell;
@@ -18,6 +17,7 @@ import java.util.Set;
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class Reduction implements SolverTechnique, Rules {
 
     public static final String TECHNIQUE = "REDUCTION";
@@ -30,7 +30,7 @@ public class Reduction implements SolverTechnique, Rules {
      * SolverStack, com.model.ValuesArray)
      */
     @Override
-    public void executeTechnique(ValuesArray values) {
+    public void executeTechnique(@Nullable ValuesArray values) {
         this.values = values;
 
         for (int groupIndex = 0; groupIndex < Board.ROWS; groupIndex++) {
@@ -47,7 +47,7 @@ public class Reduction implements SolverTechnique, Rules {
      * com.model.engine.SolverTechnique#processCellGrouping(java.util.ArrayList)
      */
     @Override
-    public void processCellGrouping(ArrayList<Cell> cells) {
+    public void processCellGrouping(@Nullable ArrayList<Cell> cells) {
         Set<Integer> uniques = new HashSet<Integer>();
         Set<Integer> uniqueQuads = new HashSet<Integer>();
         Set<Integer> dups = new HashSet<Integer>();
@@ -58,9 +58,9 @@ public class Reduction implements SolverTechnique, Rules {
          */
         for (Cell cell : cells) {
             ArrayList<Integer> possibleValues = cell.getRemainingPossibilities();
-            for (Integer posibility : possibleValues) {
-                if (!uniques.add(posibility)) {
-                    dups.add(posibility);
+            for (Integer possibility : possibleValues) {
+                if (!uniques.add(possibility)) {
+                    dups.add(possibility);
                 }
             }
         }
@@ -107,7 +107,8 @@ public class Reduction implements SolverTechnique, Rules {
      * @param possibility
      * @return
      */
-    public ArrayList<Cell> getCellsContainingPossibility(ArrayList<Cell> cells, Integer possibility) {
+    @Nullable
+    public ArrayList<Cell> getCellsContainingPossibility(@Nullable ArrayList<Cell> cells, @Nullable Integer possibility) {
         ArrayList<Cell> cellsContainingPossibility = new ArrayList<Cell>();
 
         for (Cell cell : cells) {

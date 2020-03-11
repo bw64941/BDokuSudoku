@@ -1,9 +1,9 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
 
 import android.content.Context;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -19,11 +19,11 @@ import java.util.StringTokenizer;
 public class BoardOpen {
 
     public static final String SAVED_IN_PROGRESS_FILE_NAME = "in_progress.txt";
-    public static final String FIELD_DELIMETER = "@";
+    public static final String FIELD_DELIMITER = "@";
     private SavedBoard savedBoard = null;
-    private Context context = null;
+    private final Context context;
 
-    public BoardOpen(Context context) {
+    public BoardOpen(@Nullable Context context) {
         this.context = context;
     }
 
@@ -31,25 +31,26 @@ public class BoardOpen {
      * Checks for already in progress boards with given difficulty.
      */
     public void open() {
-        String line = "";
+        String line;
         boolean boardFound = false;
 
         try {
             FileInputStream inputStream = context.openFileInput(BoardOpen.SAVED_IN_PROGRESS_FILE_NAME);
             BufferedReader bufferedInput = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = bufferedInput.readLine()) != null) {
-                StringTokenizer tokenizer = new StringTokenizer(line, BoardOpen.FIELD_DELIMETER);
+                StringTokenizer tokenizer = new StringTokenizer(line, BoardOpen.FIELD_DELIMITER);
                 savedBoard = new SavedBoard(tokenizer.nextToken(), tokenizer.nextToken(), tokenizer.nextToken(), tokenizer.nextToken());
                 boardFound = true;
-                break;
             }
 
-            if (boardFound == false) {
+            if (!boardFound) {
                 savedBoard = null;
             }
             bufferedInput.close();
         } catch (FileNotFoundException e) {
+            Log.d("BoardOpen", "Error Opening Board from File.  File not found");
         } catch (IOException e) {
+            Log.d("BoardOpen", "Unknown Error");
         }
     }
 
@@ -58,13 +59,14 @@ public class BoardOpen {
      */
     public void deleteExistingFile() {
         if (!context.deleteFile(BoardOpen.SAVED_IN_PROGRESS_FILE_NAME)) {
-//	    Log.d("BoardOpen", "Error Deleting File");
+            Log.d("BoardOpen", "Error Deleting File");
         }
     }
 
     /**
      * @return the savedBoard
      */
+    @Nullable
     public SavedBoard getSavedBoard() {
         return savedBoard;
     }
@@ -73,7 +75,7 @@ public class BoardOpen {
      * @param savedBoard
      *            the savedBoard to set
      */
-    public void setSavedBoard(SavedBoard savedBoard) {
+    public void setSavedBoard(@Nullable SavedBoard savedBoard) {
         this.savedBoard = savedBoard;
     }
 

@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ironbrand.controller;
 
 import android.app.Activity;
@@ -12,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.R;
 
@@ -27,7 +26,7 @@ public class DifficultyChooserActivity extends Activity {
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

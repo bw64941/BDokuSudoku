@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.engine;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Cell;
 import com.ironbrand.bdokusudoku.ValuesArray;
@@ -14,9 +13,9 @@ import java.util.ArrayList;
  */
 public interface SolverTechnique {
 
-    void executeTechnique(ValuesArray values);
+    void executeTechnique(@Nullable ValuesArray values);
 
-    void processCellGrouping(ArrayList<Cell> cells);
+    void processCellGrouping(@Nullable ArrayList<Cell> cells);
 
     enum CellModStatus {
         SET_VALUE, REMOVE_POSSIBILITY

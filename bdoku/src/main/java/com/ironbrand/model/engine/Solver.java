@@ -1,7 +1,6 @@
-/**
- * /**
- */
 package com.ironbrand.model.engine;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.Cell;
@@ -20,6 +19,7 @@ import java.util.Set;
 /**
  * @author BWinters
  */
+@SuppressWarnings("ALL")
 public class Solver implements Runnable {
 
     public static final int ANALYZE_ENTIRE_ARRAY = 0;
@@ -30,14 +30,12 @@ public class Solver implements Runnable {
     private boolean solveInProgress = false;
     private int numberOfRecursionsNeededToSolve = 0;
     private int numberOfStepsToSolve = 0;
-    private SolverContext solverContext = null;
 
     /**
      * Solver Constructor
      *
-     * @param board
      */
-    public Solver(ValuesArray values) {
+    public Solver(@Nullable ValuesArray values) {
         solveInProgress = true;
         this.values = values;
     }
@@ -57,7 +55,7 @@ public class Solver implements Runnable {
         } else {
 
             for (int areaNumber = 0; areaNumber < Board.ROWS; areaNumber++) {
-                solverContext = new SolverContext(new Reduction());
+                SolverContext solverContext = new SolverContext(new Reduction());
                 solverContext.executeTechnique(values);
                 solverContext = new SolverContext(new OnlyPossibilityLeft());
                 solverContext.executeTechnique(values);
@@ -97,7 +95,6 @@ public class Solver implements Runnable {
      * possibilities left. Remove those possibilities from the quad excluding
      * the 2 cells identified
      *
-     * @param cells
      * @param quadInQuestion
      */
     private void nakedPairsInQuad(int quadInQuestion) {
@@ -162,7 +159,6 @@ public class Solver implements Runnable {
      * possibilities left. Remove those possibilities from the column excluding
      * the 2 cells identified.
      *
-     * @param cells
      * @param colInQuestion
      */
     private void nakedPairsInCol(int colInQuestion) {
@@ -220,7 +216,6 @@ public class Solver implements Runnable {
      * possibilities left. Remove those possibilities from the row excluding the
      * 2 cells identified.
      *
-     * @param cells
      * @param rowInQuestion
      */
     private void nakedPairsInRow(int rowInQuestion) {
@@ -278,8 +273,6 @@ public class Solver implements Runnable {
      * possibilities left. Remove those possibilities from the cells in the qaud
      * excluding the 3 cells identified. If the 3 cells.
      *
-     * @param cells
-     * @param rowInQuestion
      */
     private void nakedTripleInQuad(int quadInQuestion) {
         ArrayList<Cell> nakedTriples = new ArrayList<Cell>();
@@ -761,7 +754,6 @@ public class Solver implements Runnable {
      * fall inside the same quadrant. Remove the possibilities from the cells in
      * the quadrant, excluding the 3 cells identified.
      *
-     * @param cells
      * @param colInQuestion
      */
     private void nakedTripleInCol(int colInQuestion) {
@@ -1151,7 +1143,6 @@ public class Solver implements Runnable {
      * inside the same quadrant. Remove the possibilities from the cells in the
      * quadrant, excluding the 3 cells identified.
      *
-     * @param cells
      * @param rowInQuestion
      */
     private void nakedTripleInRow(int rowInQuestion) {
@@ -1539,7 +1530,6 @@ public class Solver implements Runnable {
      * If the 2 unique possibilities occur in the same cell, then remove any
      * other possibility from those 2 cells.
      *
-     * @param cells
      * @param quadInQuestion
      */
     @SuppressWarnings("unused")
@@ -1558,8 +1548,8 @@ public class Solver implements Runnable {
         }
 
         for (Integer possibility : possibilitiesInQuad) {
-            int occurrances = getNumOfOccurancesOfPossibilityInCellList(cellsInQuad, possibility);
-            if (occurrances == 2) {
+            int occurrence = getNumOfOccurrencesOfPossibilityInCellList(cellsInQuad, possibility);
+            if (occurrence == 2) {
                 possibilitiesThatOccurTwice.add(possibility);
             }
         }
@@ -1628,7 +1618,6 @@ public class Solver implements Runnable {
      * the 2 unique possibilities occur in the same cell, then remove any other
      * possibility from those 2 cells.
      *
-     * @param cells
      * @param colInQuestion
      */
     @SuppressWarnings("unused")
@@ -1641,7 +1630,7 @@ public class Solver implements Runnable {
 
         for (Cell cell : cellsInCol) {
             for (Integer possibility : cell.getRemainingPossibilities()) {
-                int count = getNumOfOccurancesOfPossibilityInCellList(cellsInCol, possibility);
+                int count = getNumOfOccurrencesOfPossibilityInCellList(cellsInCol, possibility);
                 if (count == 2) {
                     possibilitiesThatOccurTwice.add(possibility);
                 }
@@ -1712,8 +1701,7 @@ public class Solver implements Runnable {
      * the 2 unique possibilities occur in the same cell, then remove any other
      * possibility from those 2 cells.
      *
-     * @param cells
-     * @param colInQuestion
+     * @param rowInQuestion
      */
     @SuppressWarnings("unused")
     private void hiddenPairsInRow(int rowInQuestion) {
@@ -1731,8 +1719,8 @@ public class Solver implements Runnable {
         }
 
         for (Integer possibility : rowPossibilities) {
-            int occurrances = getNumOfOccurancesOfPossibilityInCellList(cellsInRow, possibility);
-            if (occurrances == 2) {
+            int occurrences = getNumOfOccurrencesOfPossibilityInCellList(cellsInRow, possibility);
+            if (occurrences == 2) {
                 possibilitiesThatOccurTwice.add(possibility);
             }
         }
@@ -1801,7 +1789,6 @@ public class Solver implements Runnable {
      * the 3 unique possibilities occur in the same cell, then remove any other
      * possibility from those 3 cells.
      *
-     * @param cells
      * @param rowInQuestion
      */
     @SuppressWarnings("unused")
@@ -1814,7 +1801,7 @@ public class Solver implements Runnable {
 
         for (Cell cell : cellsInRow) {
             for (Integer possibility : cell.getRemainingPossibilities()) {
-                int count = getNumOfOccurancesOfPossibilityInCellList(cellsInRow, possibility);
+                int count = getNumOfOccurrencesOfPossibilityInCellList(cellsInRow, possibility);
                 if (count == 3) {
                     possibilitiesThatOccurThreeTimes.add(possibility);
                 }
@@ -1887,7 +1874,8 @@ public class Solver implements Runnable {
      * @param possibility
      * @return
      */
-    public ArrayList<Cell> getCellsContainingPossibility(ArrayList<Cell> cells, Integer possibility) {
+    @Nullable
+    public ArrayList<Cell> getCellsContainingPossibility(@Nullable ArrayList<Cell> cells, @Nullable Integer possibility) {
         ArrayList<Cell> cellsContainingPossibility = new ArrayList<Cell>();
 
         for (Cell cell : cells) {
@@ -1906,7 +1894,8 @@ public class Solver implements Runnable {
      * @param possibility
      * @return
      */
-    public ArrayList<Cell> getCellsContainingPossibilityList(ArrayList<Cell> cells, ArrayList<Integer> possibility) {
+    @Nullable
+    public ArrayList<Cell> getCellsContainingPossibilityList(@Nullable ArrayList<Cell> cells, @Nullable ArrayList<Integer> possibility) {
         ArrayList<Cell> cellsContainingPossibility = new ArrayList<Cell>();
 
         for (Cell cell : cells) {
@@ -1923,19 +1912,19 @@ public class Solver implements Runnable {
      *
      * @param cells
      * @param possibility
-     * @return
+     * @return int
      */
-    public int getNumOfOccurancesOfPossibilityInCellList(ArrayList<Cell> cells, Integer possibility) {
-        int numOfOccurrances = 0;
+    public int getNumOfOccurrencesOfPossibilityInCellList(@Nullable ArrayList<Cell> cells, @Nullable Integer possibility) {
+        int numberOfOccurrences = 0;
 
         for (Cell cell : cells) {
             for (Integer poss : cell.getRemainingPossibilities()) {
                 if (poss.equals(possibility)) {
-                    numOfOccurrances++;
+                    numberOfOccurrences++;
                 }
             }
         }
-        return numOfOccurrances;
+        return numberOfOccurrences;
     }
 
     /**

@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,29 +36,22 @@ import com.ironbrand.view.BoardView;
 import java.util.ArrayList;
 import java.util.Random;
 
-//import com.facebook.android.AsyncFacebookRunner.RequestListener;
-//import com.facebook.android.FacebookError;
-//import com.facebook.android.Util;
-
 public class BoardActivity extends Activity implements OnClickListener, OnCheckedChangeListener {
 
-    // public static final String TAG = BoardActivity.class.getName();
+    public static final String TAG = BoardActivity.class.getName();
     public static final String RESUME = "resume";
     public static final String DIFFICULTY_CHOSEN = "difficulty";
     public static final String BOARD_DIFFICULTY_EASY = "Easy";
     public static final String BOARD_DIFFICULTY_MEDIUM = "Medium";
     public static final String BOARD_DIFFICULTY_HARD = "Hard";
     public static final String TIMER_VALUE = "gameTime";
-    public static final int SOLVED_TIME_DISPLAY_POST = 100;
-    public static final int POST_GAME_TIME = 200;
+    private static final int SOLVED_TIME_DISPLAY_POST = 100;
     public static final int ROWS = Board.ROWS;
     public static final int COLUMNS = Board.COLUMNS;
     private static Board board = null;
     private BoardView boardView = null;
-    private Animation openFadeAnimation = null;
     private boolean solved = false;
     private TextView timeText = null;
-    private AdView mAdView;
 
     /*
      * Creates main board view and creates background board entity.
@@ -64,13 +59,13 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.board);
 
         MobileAds.initialize(this);
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -110,7 +105,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
 
         boardView = findViewById(R.id.boardView);
 
-        openFadeAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        Animation openFadeAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         openFadeAnimation.reset();
 
         LinearLayout relativeLayout = findViewById(R.id.boardLayout);
@@ -132,8 +127,8 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
         pencilToggle.setOnCheckedChangeListener(this);
 
         TextView difficultyText = findViewById(R.id.difficultyChosen);
-        String difficultyChosen = getIntent().getStringExtra(BoardActivity.DIFFICULTY_CHOSEN);
-        difficultyText.setText(difficultyChosen);
+        //String difficultyChosen = getIntent().getStringExtra(BoardActivity.DIFFICULTY_CHOSEN);
+        difficultyText.setText(String.format(getString(R.string.difficultyChosen), getIntent().getStringExtra(BoardActivity.DIFFICULTY_CHOSEN)));
 
 
         Button save = findViewById(R.id.save);
@@ -156,7 +151,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     /*
      * Update timer view from game timer.
      */
-    public void updateTimer(String time) {
+    public void updateTimer(@Nullable String time) {
         timeText = findViewById(R.id.timerText);
         timeText.setText(time);
     }
@@ -167,13 +162,13 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      */
     private int showBoard() {
         int rc = 0;
-        int[][] predefinedBoardValuesArray = null;
+        int[][] predefinedBoardValuesArray;
         BoardOpen opener = new BoardOpen(this);
 
         boolean resumeInProgressGame = getIntent().getBooleanExtra(BoardActivity.RESUME, false);
 
-        if (resumeInProgressGame == true) {
-            ArrayList<ArrayList<Integer>> savedPencilValues = null;
+        if (resumeInProgressGame) {
+            ArrayList<ArrayList<Integer>> savedPencilValues;
             opener.open();
             SavedBoard savedInProgressBoard = opener.getSavedBoard();
             predefinedBoardValuesArray = savedInProgressBoard.getArrayValues();
@@ -215,8 +210,8 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      * Checks all of the user placed values on the board.
      */
     private void checkWorkDoneOnBoard() {
-        if (solved == false) {
-            if (checkBoardValidity() == false) {
+        if (!solved) {
+            if (!checkBoardValidity()) {
                 showToast(getResources().getString(R.string.mistakeText));
             } else {
                 showToast(getResources().getString(R.string.doingGreatText));
@@ -227,11 +222,11 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     /**
      * Save Board
      *
-     * @return
+     * @return void
      */
     private void saveBoard() {
-        if (solved == false) {
-            if (checkBoardValidity() == true) {
+        if (!solved) {
+            if (checkBoardValidity()) {
                 new BoardSaver(this).execute(board);
             } else {
                 showToast(getResources().getString(R.string.correctMistakesText));
@@ -260,7 +255,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      * Get next Solved Value not figure out by player for Hint.
      */
     private void getRandomHint() {
-        if (solved == false) {
+        if (!solved) {
             Cell hintCell = null;
 
             /*
@@ -268,10 +263,10 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
              * incorrectly solved by user. Give correct hint for that cell.
              */
             while (hintCell == null) {
-                Random randon = new Random();
-                int randomInex = randon.nextInt(board.getValues().size());
-                if ((board.getValues().get(randomInex).isUserPlaced() || board.getValues().get(randomInex).isEmpty()) && board.getSolvedValuesArray().get(randomInex).getValue() != board.getValues().get(randomInex).getValue()) {
-                    hintCell = board.getSolvedValuesArray().get(randomInex);
+                Random randomNumber = new Random();
+                int randomIndex = randomNumber.nextInt(board.getValues().size());
+                if ((board.getValues().get(randomIndex).isUserPlaced() || board.getValues().get(randomIndex).isEmpty()) && board.getSolvedValuesArray().get(randomIndex).getValue() != board.getValues().get(randomIndex).getValue()) {
+                    hintCell = board.getSolvedValuesArray().get(randomIndex);
                 }
             }
 
@@ -283,8 +278,8 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      * Clears a cell on the board after clear button has been pressed.
      */
     private void undoLastMove() {
-        if (board.getValues().getHistory().size() > 0 && solved == false) {
-            SolverStep setValueStep = null;
+        if (board.getValues().getHistory().size() > 0 && !solved) {
+            SolverStep setValueStep;
 
             if (board.getValues().getHistory().peek().getAlgorithm().equals(SolverStep.USER_PLACED)) {
                 setValueStep = board.getValues().getHistory().pop();
@@ -307,8 +302,8 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     /*
      * Toggle Pencil Mode for game.
      */
-    public void togglePencilMode(boolean value) {
-        if (solved == false) {
+    private void togglePencilMode(boolean value) {
+        if (!solved) {
             boardView.setPencilModeOn(value);
         }
     }
@@ -323,12 +318,8 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == BoardActivity.SOLVED_TIME_DISPLAY_POST) {
-            if (resultCode == BoardActivity.POST_GAME_TIME) {
-            }
-        }
     }
 
     private void showToast(final String message) {
@@ -371,13 +362,14 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      *
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
+    @Nullable
     @Override
     public Object onRetainNonConfigurationInstance() {
         return Board.getBoard();
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(@Nullable View v) {
         if (v.getId() == R.id.undo) {
             undoLastMove();
         } else if (v.getId() == R.id.validate) {
@@ -390,15 +382,13 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
             setSolvedOn();
         } else if (v.getId() == R.id.save) {
             saveBoard();
-        } else {
         }
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    public void onCheckedChanged(@Nullable CompoundButton buttonView, boolean isChecked) {
         if (buttonView.getId() == R.id.pencilToggle) {
             togglePencilMode(isChecked);
-        } else {
         }
     }
 

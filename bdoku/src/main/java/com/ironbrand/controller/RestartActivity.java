@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ironbrand.controller;
 
 import android.app.Activity;
@@ -13,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.R;
 
@@ -28,7 +27,7 @@ public class RestartActivity extends Activity {
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -37,7 +36,7 @@ public class RestartActivity extends Activity {
         RelativeLayout alertDialog = (RelativeLayout) layout.inflate(R.layout.solved_popup, null);
 
         Button gameTimeButton = alertDialog.findViewById(R.id.gameTime_button);
-        gameTimeButton.setText("Time " + getIntent().getStringExtra(BoardActivity.TIMER_VALUE));
+        gameTimeButton.setText(String.format(getString(R.string.solveTimeLabel), getIntent().getStringExtra(BoardActivity.TIMER_VALUE)));
 
         Button ok = alertDialog.findViewById(R.id.solvOkButton);
         ok.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +51,7 @@ public class RestartActivity extends Activity {
     }
 
     private void startSplash() {
-        Intent resumeIntent = new Intent(this, AndokuActivity.class);
+        Intent resumeIntent = new Intent(this, BDokuSudoku.class);
         resumeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(resumeIntent);
     }

@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.technique;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Cell;
 import com.ironbrand.bdokusudoku.ValuesArray;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
  */
 public class OnlyPossibilityLeft implements SolverTechnique, Rules {
 
-    public static final String TECHNIQUE = "ONLY POSSIBILITY LEFT";
+    private static final String TECHNIQUE = "ONLY POSSIBILITY LEFT";
     private ValuesArray values = null;
 
     /*
@@ -28,7 +27,7 @@ public class OnlyPossibilityLeft implements SolverTechnique, Rules {
      * com.model.ValuesArray)
      */
     @Override
-    public void executeTechnique(ValuesArray values) {
+    public void executeTechnique(@Nullable ValuesArray values) {
         this.values = values;
 
         /*
@@ -42,8 +41,8 @@ public class OnlyPossibilityLeft implements SolverTechnique, Rules {
      * @see com.model.SolverTechnique#processCellGrouping(java.util.ArrayList)
      */
     @Override
-    public void processCellGrouping(ArrayList<Cell> cells) {
-        int valuePlaced = 0;
+    public void processCellGrouping(@Nullable ArrayList<Cell> cells) {
+        int valuePlaced;
 
         /*
          * Loop through all cells and if the cell only has 1 possibility,

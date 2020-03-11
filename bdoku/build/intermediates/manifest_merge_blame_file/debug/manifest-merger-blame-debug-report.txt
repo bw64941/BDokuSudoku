@@ -13,165 +13,146 @@
 11
 12    <!-- Include required permissions for Google Mobile Ads to run. -->
 13    <uses-permission android:name="android.permission.INTERNET" />
-13-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:9:5-67
-13-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:9:22-64
+13-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:10:5-67
+13-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:10:22-64
 14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-14-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:10:5-79
-14-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:10:22-76
+14-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:11:5-79
+14-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:11:22-76
 15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:11:5-81
-15-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:11:22-78
+15-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:12:5-81
+15-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:12:22-78
 16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-16-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:12:5-80
-16-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:12:22-77
+16-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:13:5-80
+16-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:13:22-77
 17    <uses-permission android:name="android.permission.WAKE_LOCK" />
-17-->[com.google.android.gms:play-services-measurement-sdk-api:16.3.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e001bf26c76d0e846acba24f63b33575/play-services-measurement-sdk-api-16.3.0/AndroidManifest.xml:25:5-68
-17-->[com.google.android.gms:play-services-measurement-sdk-api:16.3.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e001bf26c76d0e846acba24f63b33575/play-services-measurement-sdk-api-16.3.0/AndroidManifest.xml:25:22-65
+17-->[com.google.android.gms:play-services-measurement-sdk-api:17.1.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/a30d31382de4f03f80c19b076c75b8a7/play-services-measurement-sdk-api-17.1.0/AndroidManifest.xml:25:5-68
+17-->[com.google.android.gms:play-services-measurement-sdk-api:17.1.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/a30d31382de4f03f80c19b076c75b8a7/play-services-measurement-sdk-api-17.1.0/AndroidManifest.xml:25:22-65
 18
 19    <application
-19-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:14:5-68:19
-20        android:debuggable="true"
-21        android:icon="@drawable/bdoku_launcher"
-21-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:15:9-48
-22        android:label="@string/applicationName" >
-22-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:16:9-48
-23        <activity
-23-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:17:9-20:57
-24            android:name="com.ironbrand.controller.BoardActivity"
-24-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:18:13-66
-25            android:screenOrientation="portrait"
-25-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:19:13-49
-26            android:theme="@style/Theme.Sudoku.Board" />
-26-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:20:13-54
-27        <activity
-27-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:21:9-24:58
-28            android:name="com.ironbrand.controller.AboutActivity"
+19-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:15:5-65:19
+20        android:allowBackup="false"
+20-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:19:9-36
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/246153fc0686d4ff78c8961ca91329b7/core-1.0.0/AndroidManifest.xml:22:18-86
+22        android:debuggable="true"
+23        android:fullBackupContent="@xml/backup_descriptor"
+23-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:20:9-59
+24        android:icon="@drawable/bdoku_launcher"
+24-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:16:9-48
+25        android:label="@string/applicationName"
+25-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:17:9-48
+26        android:supportsRtl="true"
+26-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:18:9-35
+27        android:testOnly="true" >
+28        <activity android:name="com.ironbrand.controller.BoardActivity" />
+28-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:21:9-22:69
 28-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:22:13-66
-29            android:screenOrientation="portrait"
-29-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:23:13-49
-30            android:theme="@style/Theme.Sudoku.Dialog" />
-30-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:24:13-55
-31        <activity
-31-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:25:9-28:58
-32            android:name="com.ironbrand.controller.ResumeBoardActivity"
-32-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:26:13-72
-33            android:screenOrientation="portrait"
-33-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:27:13-49
+29        <activity
+29-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:23:9-25:58
+30            android:name="com.ironbrand.controller.AboutActivity"
+30-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:24:13-66
+31            android:theme="@style/Theme.Sudoku.Dialog" />
+31-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:25:13-55
+32        <activity
+32-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:26:9-28:58
+33            android:name="com.ironbrand.controller.ResumeBoardActivity"
+33-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:27:13-72
 34            android:theme="@style/Theme.Sudoku.Dialog" />
 34-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:28:13-55
 35        <activity
-35-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:29:9-32:58
+35-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:29:9-31:58
 36            android:name="com.ironbrand.controller.DifficultyChooserActivity"
 36-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:30:13-78
-37            android:screenOrientation="portrait"
-37-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:31:13-49
-38            android:theme="@style/Theme.Sudoku.Dialog" />
-38-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:32:13-55
-39        <activity
-39-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:33:9-36:58
-40            android:name="com.ironbrand.controller.RestartActivity"
-40-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:34:13-68
-41            android:screenOrientation="portrait"
-41-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:35:13-49
-42            android:theme="@style/Theme.Sudoku.Dialog" />
-42-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:36:13-55
-43
-44        <meta-data
-44-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:38:9-40:57
-45            android:name="preloaded_fonts"
-45-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:39:13-43
-46            android:resource="@array/preloaded_fonts" />
-46-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:40:13-54
-47        <meta-data
-47-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:42:9-44:51
-48            android:name="com.google.android.gms.ads.APPLICATION_ID"
-48-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:43:13-69
-49            android:value="@string/admob_app_id" />
-49-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:44:13-49
-50
-51        <activity
-51-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:46:9-67:20
-52            android:name="com.ironbrand.controller.AndokuActivity"
-52-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:47:13-67
-53            android:theme="@style/Theme.Sudoku.Splash" >
-53-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:48:13-55
-54            <intent-filter android:label="@string/applicationName" >
-54-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:49:13-61:29
-54-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:49:28-67
-55                <action android:name="android.intent.action.VIEW" />
-55-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:50:17-69
-55-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:50:25-66
-56
-57                <category android:name="android.intent.category.DEFAULT" />
-57-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:52:17-76
-57-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:52:27-73
-58                <category android:name="android.intent.category.BROWSABLE" />
-58-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:53:17-78
-58-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:53:27-75
-59                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-60                <data
-60-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:55:17-58:45
-61                    android:host="www.facebook.com"
-61-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:56:21-52
-62                    android:pathPrefix="/B-Doku-for-Android-287473001316390/?ref=your_pages"
-62-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:57:21-93
-63                    android:scheme="http" />
-63-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:58:21-42
-64                <!-- note that the leading "/" is required for pathPrefix -->
-65                <!-- Accepts URIs that begin with "example://gizmos” -->
-66            </intent-filter>
-67            <intent-filter>
-67-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:62:13-66:29
-68                <action android:name="android.intent.action.MAIN" />
-68-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:63:17-69
-68-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:63:25-66
-69
-70                <category android:name="android.intent.category.LAUNCHER" />
-70-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:65:17-77
-70-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:65:27-74
-71            </intent-filter>
-72        </activity>
-73
-74        <meta-data
-74-->[com.android.support:customtabs:26.1.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/1595c5e22c79d7ca7d3c867adccb637c/customtabs-26.1.0/AndroidManifest.xml:23:9-25:38
-75            android:name="android.support.VERSION"
-75-->[com.android.support:customtabs:26.1.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/1595c5e22c79d7ca7d3c867adccb637c/customtabs-26.1.0/AndroidManifest.xml:24:13-51
-76            android:value="26.1.0" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
-76-->[com.android.support:customtabs:26.1.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/1595c5e22c79d7ca7d3c867adccb637c/customtabs-26.1.0/AndroidManifest.xml:25:13-35
-77        <activity
-77-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:29:9-33:64
-78            android:name="com.google.android.gms.ads.AdActivity"
-78-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:30:13-65
-79            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-79-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:31:13-122
-80            android:exported="false"
-80-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:32:13-37
-81            android:theme="@android:style/Theme.Translucent" />
-81-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:33:13-61
-82
-83        <provider
-83-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:35:9-39:39
-84            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-84-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:36:13-76
-85            android:authorities="com.ironbrand.bdokusudoku.mobileadsinitprovider"
-85-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:37:13-73
-86            android:exported="false"
-86-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:38:13-37
-87            android:initOrder="100" />
-87-->[com.google.android.gms:play-services-ads-lite:17.2.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/e10e9cdc60625f635f6bfa690e4368c5/play-services-ads-lite-17.2.0/AndroidManifest.xml:39:13-36
-88
-89        <meta-data
-89-->[com.google.android.gms:play-services-basement:16.0.1] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/7ada373fc6164c809f0ba958b45379c3/play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
-90            android:name="com.google.android.gms.version"
-90-->[com.google.android.gms:play-services-basement:16.0.1] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/7ada373fc6164c809f0ba958b45379c3/play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
-91            android:value="@integer/google_play_services_version" />
-91-->[com.google.android.gms:play-services-basement:16.0.1] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/7ada373fc6164c809f0ba958b45379c3/play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
-92        <meta-data
-92-->[android.arch.lifecycle:runtime:1.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/cbd00f137ffe055a54edb27e1642d0f7/runtime-1.0.0/AndroidManifest.xml:25:9-27:47
-93            android:name="android.arch.lifecycle.VERSION"
-93-->[android.arch.lifecycle:runtime:1.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/cbd00f137ffe055a54edb27e1642d0f7/runtime-1.0.0/AndroidManifest.xml:26:13-58
-94            android:value="27.0.0-SNAPSHOT" />
-94-->[android.arch.lifecycle:runtime:1.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/cbd00f137ffe055a54edb27e1642d0f7/runtime-1.0.0/AndroidManifest.xml:27:13-44
-95    </application>
-96
-97</manifest>
+37            android:theme="@style/Theme.Sudoku.Dialog" />
+37-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:31:13-55
+38        <activity
+38-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:32:9-34:58
+39            android:name="com.ironbrand.controller.RestartActivity"
+39-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:33:13-68
+40            android:theme="@style/Theme.Sudoku.Dialog" />
+40-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:34:13-55
+41
+42        <meta-data
+42-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:36:9-38:57
+43            android:name="preloaded_fonts"
+43-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:37:13-43
+44            android:resource="@array/preloaded_fonts" />
+44-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:38:13-54
+45        <meta-data
+45-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:40:9-42:52
+46            android:name="com.google.android.gms.ads.APPLICATION_ID"
+46-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:41:13-69
+47            android:value="@string/admob_app_id" />
+47-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:42:13-49
+48
+49        <activity android:name="com.ironbrand.controller.BDokuSudoku" >
+49-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:44:9-64:20
+49-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:45:13-64
+50            <intent-filter android:label="@string/applicationName" >
+50-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:46:13-58:29
+50-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:46:28-67
+51                <action android:name="android.intent.action.VIEW" />
+51-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:47:17-69
+51-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:47:25-66
+52
+53                <category android:name="android.intent.category.DEFAULT" />
+53-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:49:17-76
+53-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:49:27-73
+54                <category android:name="android.intent.category.BROWSABLE" />
+54-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:50:17-78
+54-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:50:27-75
+55                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+56                <data
+56-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:52:17-55:45
+57                    android:host="www.facebook.com"
+57-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:53:21-52
+58                    android:pathPrefix="/B-Doku-for-Android-287473001316390/?ref=your_pages"
+58-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:54:21-93
+59                    android:scheme="http" />
+59-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:55:21-42
+60                <!-- note that the leading "/" is required for pathPrefix -->
+61                <!-- Accepts URIs that begin with "example://gizmos” -->
+62            </intent-filter>
+63            <intent-filter>
+63-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:59:13-63:29
+64                <action android:name="android.intent.action.MAIN" />
+64-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:60:17-69
+64-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:60:25-66
+65
+66                <category android:name="android.intent.category.LAUNCHER" />
+66-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:62:17-77
+66-->/Users/bwinters/StudioProjects/BDokuFriends/bdoku/src/main/AndroidManifest.xml:62:27-74
+67            </intent-filter>
+68        </activity>
+69        <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+70        <activity
+70-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:29:9-33:64
+71            android:name="com.google.android.gms.ads.AdActivity"
+71-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:30:13-65
+72            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+72-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:31:13-122
+73            android:exported="false"
+73-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:32:13-37
+74            android:theme="@android:style/Theme.Translucent" />
+74-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:33:13-61
+75
+76        <provider
+76-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:35:9-39:39
+77            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+77-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:36:13-76
+78            android:authorities="com.ironbrand.bdokusudoku.mobileadsinitprovider"
+78-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:37:13-73
+79            android:exported="false"
+79-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:38:13-37
+80            android:initOrder="100" />
+80-->[com.google.android.gms:play-services-ads-lite:19.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/b37646b9fa7ff8efd2b3523851b33c5b/play-services-ads-lite-19.0.0/AndroidManifest.xml:39:13-36
+81
+82        <meta-data
+82-->[com.google.android.gms:play-services-basement:17.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+83            android:name="com.google.android.gms.version"
+83-->[com.google.android.gms:play-services-basement:17.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+84            android:value="@integer/google_play_services_version" />
+84-->[com.google.android.gms:play-services-basement:17.0.0] /Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+85    </application>
+86
+87</manifest>

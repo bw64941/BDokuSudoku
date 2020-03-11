@@ -4,24 +4,7 @@
             "outputFile": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ja/values-ja.xml",
             "map": [
                 {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/fdfc4c0c9a516b63310dd73be5e5eef7/play-services-ads-17.2.0/res/values-ja/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "199,261,347,409,472,541,625",
-                        "endColumns": "61,85,61,62,68,83,62",
-                        "endOffsets": "260,346,408,471,540,624,687"
-                    },
-                    "to": {
-                        "startLines": "3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "286,352,442,508,575,648,736",
-                        "endColumns": "65,89,65,66,72,87,66",
-                        "endOffsets": "347,437,503,570,643,731,798"
-                    }
-                },
-                {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/7ada373fc6164c809f0ba958b45379c3/play-services-basement-16.0.1/res/values-ja/values.xml",
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/res/values-ja/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/19640d657814c0deaea3c9f8ce878766/support-compat-26.1.0/res/values-ja/values-ja.xml",
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/a4c08815d24ec3db65f3f457b901a86e/play-services-ads-19.0.0/res/values-ja/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,261,347,409,472,541,625",
+                        "endColumns": "61,85,61,62,68,83,62",
+                        "endOffsets": "260,346,408,471,540,624,687"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "286,352,442,508,575,648,736",
+                        "endColumns": "65,89,65,66,72,87,66",
+                        "endOffsets": "347,437,503,570,643,731,798"
+                    }
+                },
+                {
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/246153fc0686d4ff78c8961ca91329b7/core-1.0.0/res/values-ja/values-ja.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

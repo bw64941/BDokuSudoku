@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ironbrand.controller;
 
 import android.app.Activity;
@@ -13,6 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.BoardOpen;
 import com.ironbrand.bdokusudoku.R;
@@ -29,7 +28,7 @@ public class ResumeBoardActivity extends Activity implements OnClickListener {
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -49,7 +48,7 @@ public class ResumeBoardActivity extends Activity implements OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(@Nullable View v) {
         if (v.getId() == R.id.resumeYes) {
             Intent boardActivity = new Intent(getApplicationContext(), BoardActivity.class);
             boardActivity.putExtra(BoardActivity.RESUME, true);
@@ -68,8 +67,6 @@ public class ResumeBoardActivity extends Activity implements OnClickListener {
             Intent difficultyChooser = new Intent(getApplicationContext(), DifficultyChooserActivity.class);
             startActivity(difficultyChooser);
             finish();
-        } else {
-
         }
     }
 }

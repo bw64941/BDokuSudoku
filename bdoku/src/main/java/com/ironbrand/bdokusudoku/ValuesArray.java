@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.model.engine.CellChangeObserver;
 import com.ironbrand.model.engine.ValuesArrayHistory;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class ValuesArray extends ArrayList<Cell> {
 
     private static final long serialVersionUID = 1L;
@@ -36,7 +36,7 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Allows caller to pass in int[][] to initialize Value Array
      */
-    public ValuesArray(int[][] values) {
+    public ValuesArray(@Nullable int[][] values) {
         super();
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values.length; j++) {
@@ -53,11 +53,12 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Returns all cells that have a values that was placed by a user.
      */
+    @Nullable
     public ArrayList<Cell> getAllUserPlacedCells() {
         ArrayList<Cell> userPlacedCells = new ArrayList<Cell>();
 
         for (int i = 0; i < this.size(); i++) {
-            if (this.get(i).isUserPlaced() == true) {
+            if (this.get(i).isUserPlaced()) {
                 userPlacedCells.add(this.get(i));
             }
         }
@@ -68,11 +69,12 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Returns all cells that have a values that was placed by a user.
      */
+    @Nullable
     public ArrayList<Cell> getEmptyCells() {
         ArrayList<Cell> emptyCells = new ArrayList<Cell>();
 
         for (int i = 0; i < this.size(); i++) {
-            if (this.get(i).isEmpty() == true) {
+            if (this.get(i).isEmpty()) {
                 emptyCells.add(this.get(i));
             }
         }
@@ -83,10 +85,10 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Returns the cells in a specified quadrant.
      *
-     * @param cells
      * @param quad
      * @return
      */
+    @Nullable
     public ArrayList<Cell> getCellsInQuad(int quad) {
         ArrayList<Cell> cellsInQuad = new ArrayList<Cell>(Board.ROWS);
 
@@ -102,10 +104,10 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Returns the cells in a specified row.
      *
-     * @param cells
      * @param row
      * @return
      */
+    @Nullable
     public ArrayList<Cell> getCellsInRow(int row) {
         ArrayList<Cell> cellsInRow = new ArrayList<Cell>(Board.ROWS);
 
@@ -120,10 +122,10 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * Returns the cells in a specified column.
      *
-     * @param cells
      * @param col
      * @return
      */
+    @Nullable
     public ArrayList<Cell> getCellsInCol(int col) {
         ArrayList<Cell> cellsInCol = new ArrayList<Cell>(9);
 
@@ -142,6 +144,7 @@ public class ValuesArray extends ArrayList<Cell> {
      * @param column
      * @return
      */
+    @Nullable
     public Cell getCellWithRowAndColumn(int row, int column) {
         Cell targetCell = null;
 
@@ -162,7 +165,8 @@ public class ValuesArray extends ArrayList<Cell> {
      * @param cell
      * @return
      */
-    public ArrayList<Cell> getCellsInSameRowORColORQuad(Cell cell) {
+    @Nullable
+    public ArrayList<Cell> getCellsInSameRowORColORQuad(@Nullable Cell cell) {
         ArrayList<Cell> areaCells = new ArrayList<Cell>();
 
         for (Cell otherCell : this) {
@@ -177,8 +181,6 @@ public class ValuesArray extends ArrayList<Cell> {
      * Wrapper for updating possibilities on board after placement of initial
      * values. Calls updatePossibilities method.
      *
-     * @param functionUpdating
-     * @param cells
      * @return number of empty cells on board
      */
     public void evaluateInitialValues() {
@@ -196,6 +198,7 @@ public class ValuesArray extends ArrayList<Cell> {
     /**
      * @return the history
      */
+    @Nullable
     public ValuesArrayHistory getHistory() {
         return history;
     }
@@ -204,13 +207,14 @@ public class ValuesArray extends ArrayList<Cell> {
      * @param history
      *            the history to set
      */
-    public void setHistory(ValuesArrayHistory history) {
+    public void setHistory(@Nullable ValuesArrayHistory history) {
         this.history = history;
     }
 
     /**
      * @return the valuesArray
      */
+    @Nullable
     public int[][] getValuesArray() {
         return valuesArray;
     }
@@ -219,7 +223,7 @@ public class ValuesArray extends ArrayList<Cell> {
      * @param valuesArray
      *            the valuesArray to set
      */
-    public void setValuesArray(int[][] valuesArray) {
+    public void setValuesArray(@Nullable int[][] valuesArray) {
         this.valuesArray = valuesArray;
     }
 }

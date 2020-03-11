@@ -2,10 +2,12 @@ package com.ironbrand.controller;
 
 import android.os.Handler;
 
-public class GameTimer {
+import androidx.annotation.Nullable;
+
+class GameTimer {
 
     private int _interval;
-    private Handler handler;
+    private final Handler handler;
     private Runnable _tickHandler;
     private Runnable delegate;
     private boolean ticking;
@@ -15,7 +17,7 @@ public class GameTimer {
         handler = new Handler();
     }
 
-    public GameTimer(int interval, Runnable onTickHandler) {
+    public GameTimer(int interval, @Nullable Runnable onTickHandler) {
         _interval = interval;
         setOnTickHandler(onTickHandler);
         handler = new Handler();
@@ -33,7 +35,7 @@ public class GameTimer {
         return ticking;
     }
 
-    public void start(int interval, Runnable onTickHandler) {
+    public void start(int interval, @Nullable Runnable onTickHandler) {
         if (ticking)
             return;
         _interval = interval;
@@ -54,7 +56,7 @@ public class GameTimer {
         ticking = false;
     }
 
-    public void setOnTickHandler(Runnable onTickHandler) {
+    private void setOnTickHandler(@Nullable Runnable onTickHandler) {
         if (onTickHandler == null)
             return;
 

@@ -1,11 +1,11 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.model.engine.Solver;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * @author bwinters
@@ -31,6 +31,7 @@ public class Board {
     /**
      * @return the board after creating new values/cells
      */
+    @Nullable
     public static synchronized Board getBoard() {
         if (board == null) {
             board = new Board();
@@ -44,14 +45,15 @@ public class Board {
      * @param board
      *            the board to set Probably will not use.....
      */
-    public static synchronized void setBoard(Board board) {
+    public static synchronized void setBoard(@Nullable Board board) {
         Board.board = board;
     }
 
     /**
      * @return the board given values as parameter
      */
-    public static synchronized Board getBoard(int[][] valuesIntArray) {
+    @Nullable
+    public static synchronized Board getBoard(@Nullable int[][] valuesIntArray) {
         if (board == null) {
             board = new Board();
         }
@@ -72,6 +74,7 @@ public class Board {
     /**
      * @return the values
      */
+    @Nullable
     public synchronized ValuesArray getValues() {
         return values;
     }
@@ -80,7 +83,7 @@ public class Board {
      * @param values
      *            the values to set
      */
-    public synchronized void setValues(ValuesArray values) {
+    public synchronized void setValues(@Nullable ValuesArray values) {
         Board.values = values;
     }
 
@@ -139,6 +142,7 @@ public class Board {
     /**
      * @return the solvedValuesArray
      */
+    @Nullable
     public synchronized ValuesArray getSolvedValuesArray() {
         return solvedValuesArray;
     }
@@ -147,7 +151,7 @@ public class Board {
      * @param solvedValuesArray
      *            the solvedValuesArray to set
      */
-    public synchronized void setSolvedValuesArray(ValuesArray solvedValuesArray) {
+    public synchronized void setSolvedValuesArray(@Nullable ValuesArray solvedValuesArray) {
         Board.solvedValuesArray = solvedValuesArray;
     }
 
@@ -160,11 +164,11 @@ public class Board {
         ArrayList<Cell> userCells = values.getAllUserPlacedCells();
         ArrayList<Cell> emptyCells = values.getEmptyCells();
 
-        if (emptyCells.size() > 0 || userCells.size() == 0) {
+        if (Objects.requireNonNull(emptyCells).size() > 0 || Objects.requireNonNull(userCells).size() == 0) {
             solved = false;
         } else {
             for (Cell cell : userCells) {
-                if (cell.getValue() != solvedValuesArray.getCellWithRowAndColumn(cell.getRow(), cell.getCol()).getValue()) {
+                if (cell.getValue() != Objects.requireNonNull(solvedValuesArray.getCellWithRowAndColumn(cell.getRow(), cell.getCol())).getValue()) {
                     solved = false;
                     break;
                 }

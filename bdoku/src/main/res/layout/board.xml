@@ -5,7 +5,6 @@
     android:id="@+id/boardLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bdoku_faded_blue"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -13,55 +12,39 @@
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         ads:adSize="BANNER"
         ads:adUnitId="@string/interstitial_ad_unit_id" />
 
-    <LinearLayout
-        android:id="@+id/topPanelHeader"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/popup_top_frame"
-        android:orientation="horizontal" />
-
     <RelativeLayout
-        android:id="@+id/timerPanel"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/bdoku_dark_blue"
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/difficultyLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:fontFamily="@font/alfa_slab_one"
-
-            android:text="@string/difficultyLabel"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/difficultyChosen"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/difficultyLabel"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
             android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/difficultyChosen"
             android:textColor="@color/bdoku_light_blue"
-            android:textSize="20sp" />
-
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/hintButton"
-            android:layout_width="105dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@+id/difficultyLabel"
+            android:layout_centerVertical="true"
             android:background="@drawable/bdoku_btn"
+            android:layout_margin="5dp"
             android:fontFamily="@font/alfa_slab_one"
             android:gravity="center"
+            android:layout_toEndOf="@+id/difficultyChosen"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="@string/hintButtonText"
@@ -70,25 +53,17 @@
 
         <Button
             android:id="@+id/solveButton"
-            android:layout_width="105dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/hintButton"
+            android:layout_margin="5dp"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
             android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="@string/solveMenuItem"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/timerLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/alfa_slab_one"
-            android:text="@string/timerLabel"
+            android:text="@string/solveButtonText"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -96,18 +71,18 @@
             android:id="@+id/timerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/timerLabel"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
             android:fontFamily="@font/alfa_slab_one"
+            android:layout_toEndOf="@+id/solveButton"
             android:text="@string/timerText"
             android:textColor="@color/bdoku_light_blue"
             android:textSize="20sp" />
 
+
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/topPanelFooter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/popup_top_frame"
@@ -115,7 +90,6 @@
 
 
     <RelativeLayout
-        android:id="@+id/mainBoard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top">
@@ -130,7 +104,7 @@
         <LinearLayout
             android:id="@+id/boardLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="475dp"
             android:layout_below="@+id/header"
             android:clipToPadding="true"
             android:orientation="horizontal">
@@ -154,7 +128,6 @@
 
 
     <RelativeLayout
-        android:id="@+id/toolbarFrame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
@@ -235,11 +208,18 @@
 
 
         <LinearLayout
-            android:id="@+id/footer3"
+            android:id="@+id/bottomFrame"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/toolbar"
             android:background="@drawable/popup_bottom_frame"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/bottomFrame"
+            android:background="@color/bdoku_light_blue"
             android:orientation="horizontal" />
 
     </RelativeLayout>

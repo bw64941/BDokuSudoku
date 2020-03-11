@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.model.engine.SolverStep;
 import com.ironbrand.model.engine.SolverTechnique.CellModStatus;
@@ -20,6 +19,7 @@ public class BoardUtils {
     /**
      * Get value at x,y coordinate
      */
+    @Nullable
     public ValuesArray getValues() {
         return Board.getBoard().getValues();
     }
@@ -35,7 +35,7 @@ public class BoardUtils {
      * Returns solved values array
      */
     public int getValueAtSolvedCell(int row, int col) {
-        int value = 0;
+        int value;
 
         Cell cell = Board.getBoard().getSolvedValuesArray().getCellWithRowAndColumn(row, col);
 
@@ -52,7 +52,7 @@ public class BoardUtils {
      * Returns solved values array
      */
     public int getValuesAtSystemCell(int row, int col) {
-        int value = 0;
+        int value;
 
         Cell cell = Board.getBoard().getValues().getCellWithRowAndColumn(row, col);
 
@@ -69,7 +69,7 @@ public class BoardUtils {
      * Returns solved values array
      */
     public int getValueAtUserCell(int row, int col) {
-        int value = 0;
+        int value;
 
         Cell cell = Board.getBoard().getValues().getCellWithRowAndColumn(row, col);
         if (cell != null && cell.isUserPlaced()) {
@@ -84,8 +84,9 @@ public class BoardUtils {
     /**
      * Returns solved values array
      */
+    @Nullable
     public ArrayList<Integer> getPencilBoardValuesArray(int row, int col) {
-        ArrayList<Integer> values = null;
+        ArrayList<Integer> values;
 
         Cell cell = Board.getBoard().getValues().getCellWithRowAndColumn(row, col);
         if (cell != null && cell.isEmpty() || cell.isUserPlaced()) {
@@ -98,7 +99,7 @@ public class BoardUtils {
     }
 
     /**
-     * Returns wheter the row,col cell has pencil values or not
+     * Returns whether the row,col cell has pencil values or not
      */
     public boolean cellHasPencilValue(int row, int col) {
         boolean hasPencilValues = false;
@@ -112,13 +113,17 @@ public class BoardUtils {
 
     /**
      * Returns a list of values from userPlaced cells on the board
-     *
-     * @param row
-     * @param col
-     * @param value
      */
+    @Nullable
     public ArrayList<Integer> getUserPlacedValuesArray() {
-        return null;
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for (Cell cell : Board.getBoard().getValues()) {
+            if (cell.isUserPlaced()) {
+                values.add(cell.getValue());
+            }
+        }
+        return values;
     }
 
     /*

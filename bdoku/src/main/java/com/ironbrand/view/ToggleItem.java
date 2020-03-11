@@ -4,12 +4,14 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
+import androidx.annotation.Nullable;
+
 /**
  * Action item, displayed as menu with icon and text.
  *
  * @author Yuki Anzai
  */
-public class ToggleItem {
+class ToggleItem {
     private Drawable icon;
     private String title;
     private boolean checked;
@@ -26,7 +28,7 @@ public class ToggleItem {
      *
      * @param icon {@link Drawable} action icon
      */
-    public ToggleItem(Drawable icon) {
+    public ToggleItem(@Nullable Drawable icon) {
         this.icon = icon;
     }
 
@@ -35,6 +37,7 @@ public class ToggleItem {
      *
      * @return action title
      */
+    @Nullable
     public String getTitle() {
         return this.title;
     }
@@ -44,7 +47,7 @@ public class ToggleItem {
      *
      * @param title action title
      */
-    public void setTitle(String title) {
+    public void setTitle(@Nullable String title) {
         this.title = title;
     }
 
@@ -53,6 +56,7 @@ public class ToggleItem {
      *
      * @return {@link Drawable} action icon
      */
+    @Nullable
     public Drawable getIcon() {
         return this.icon;
     }
@@ -62,7 +66,7 @@ public class ToggleItem {
      *
      * @param icon {@link Drawable} action icon
      */
-    public void setIcon(Drawable icon) {
+    public void setIcon(@Nullable Drawable icon) {
         this.icon = icon;
     }
 
@@ -71,7 +75,7 @@ public class ToggleItem {
      *
      * @param listener on click listener {@link View.OnClickListener}
      */
-    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+    public void setOnCheckedChangeListener(@Nullable OnCheckedChangeListener listener) {
         this.listener = listener;
     }
 
@@ -80,6 +84,7 @@ public class ToggleItem {
      *
      * @return on click listener {@link View.OnClickListener}
      */
+    @Nullable
     public OnCheckedChangeListener getListener() {
         return this.listener;
     }

@@ -4,24 +4,41 @@
             "outputFile": "/Users/bwinters/StudioProjects/BDokuFriends/bdoku/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hy/values-hy.xml",
             "map": [
                 {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/fdfc4c0c9a516b63310dd73be5e5eef7/play-services-ads-17.2.0/res/values-hy/values.xml",
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/246153fc0686d4ff78c8961ca91329b7/core-1.0.0/res/values-hy/values-hy.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "920",
+                        "endColumns": "100",
+                        "endOffsets": "1016"
+                    }
+                },
+                {
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/a4c08815d24ec3db65f3f457b901a86e/play-services-ads-19.0.0/res/values-hy/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10",
                         "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "199,269,376,442,506,592,699",
-                        "endColumns": "69,106,65,63,85,106,74",
-                        "endOffsets": "268,375,441,505,591,698,773"
+                        "startOffsets": "199,269,377,443,507,593,701",
+                        "endColumns": "69,107,65,63,85,107,74",
+                        "endOffsets": "268,376,442,506,592,700,775"
                     },
                     "to": {
                         "startLines": "3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "315,389,500,570,638,728,839",
-                        "endColumns": "73,110,69,67,89,110,78",
-                        "endOffsets": "384,495,565,633,723,834,913"
+                        "startOffsets": "315,389,501,571,639,729,841",
+                        "endColumns": "73,111,69,67,89,111,78",
+                        "endOffsets": "384,496,566,634,724,836,915"
                     }
                 },
                 {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/7ada373fc6164c809f0ba958b45379c3/play-services-basement-16.0.1/res/values-hy/values.xml",
+                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/78806884dd313b4b573318e5e9a8f54d/play-services-basement-17.0.0/res/values-hy/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -35,23 +52,6 @@
                         "startOffsets": "105",
                         "endColumns": "209",
                         "endOffsets": "310"
-                    }
-                },
-                {
-                    "source": "/Users/bwinters/.gradle/caches/transforms-2/files-2.1/19640d657814c0deaea3c9f8ce878766/support-compat-26.1.0/res/values-hy/values-hy.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "918",
-                        "endColumns": "100",
-                        "endOffsets": "1014"
                     }
                 }
             ]

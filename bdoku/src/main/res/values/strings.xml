@@ -3,12 +3,6 @@
 
     <string name="applicationName">B-Doku Sudoku</string>
 
-    <!-- Facebook String -->
-    <string name="app_id">235388389885329</string>
-    <string name="facebook_app_id">235388389885329</string>
-    <string name="fb_login_protocol_scheme">fb235388389885329</string>
-
-
     <!-- About Dialog Strings -->
     <string name="aboutTitleText">About</string>
     <string name="aboutDialogText">B-Doku is a user-friendly version of the classic Sudoku puzzle game.\n\nPlayers are challenged to determine the correct placement of numbers 1 to 9 in 3x3 squares within a 9x9 game board without repetition in squares or rows/columns.\n
@@ -24,34 +18,18 @@
     <string name="easy_button_label">Easy</string>
     <string name="medium_button_label">Medium</string>
     <string name="hard_button_label">Hard</string>
-    <string name="difficultyLabel">Difficulty</string>
+    <string name="difficultyChosen">%1$s</string>
 
     <!-- Game Play Strings -->
     <string name="doingGreatText">You are doing GREAT!</string>
     <string name="mistakeText">You have made a mistake!</string>
     <string name="correctMistakesText">Correct mistakes on board first!</string>
 
-    <!-- Menu Strings -->
-    <string name="solveMenuItem">Solve</string>
-    <string name="hintButtonText">Hint</string>
-
     <!-- Timer Strings -->
-    <string name="timerLabel">Time</string>
     <string name="timerText">0:00</string>
 
     <!-- Toolbar Strings -->
-    <string name="undoButtonText">Undo</string>
     <string name="pencilButtonText">  </string>
-    <string name="validateButtonText">Check</string>
-    <string name="saveButtonText">Save</string>
-
-    <!-- Facebook Strings -->
-    <string name="post">Post to Facebook</string>
-    <string name="helpPostString">I am Playing B-Doku Friends for Android!  Give me a hint on my next move.</string>
-    <string name="solvedPostString">I just solved this B-Doku Sudoku Board.  See if you can beat my time!</string>
-    <string name="waitingForFBResponseText">Post your game board to see comments in this window from your Friends on Facebook.</string>
-    <string name="fbPanelButtonText">Play with Friends</string>
-    <string name="shareButtonText">Share</string>
 
     <!-- Pencil Dialog Strings -->
     <string name="allButtonText">All</string>
@@ -66,21 +44,17 @@
     <string name="company">IronBrand Software</string>
 
     <!-- General -->
-    <string name="version">Version 2.5</string>
+    <string name="version">5.0</string>
     <string name="okButtonText">OK</string>
     <string name="solvedPopupText">CONGRATULATIONS</string>
-    <string name="back">Back</string>
-    <string name="title_activity_bdoku_ads">BDokuAdsActivity</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
-    <string name="start_level">Level 1</string>
-    <string name="next_level">Next Level</string>
+    <string name="solveTimeLabel">"Time %1$s"</string>
+    <string name="solveButtonText">"Solve"</string>
+    <string name="hintButtonText">"Hint"</string>
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
-    <string name="test_admob_app_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_app_id">ca-app-pub-1524918901460976~5892911447</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-1524918901460976/8846377841</string>
 

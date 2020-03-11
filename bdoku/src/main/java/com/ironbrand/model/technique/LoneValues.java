@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.technique;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.Cell;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class LoneValues implements SolverTechnique, Rules {
 
     public static final String TECHNIQUE = "ONLY POSSIBILITY LEFT";
@@ -29,7 +29,7 @@ public class LoneValues implements SolverTechnique, Rules {
      * com.model.ValuesArray)
      */
     @Override
-    public void executeTechnique(ValuesArray values) {
+    public void executeTechnique(@Nullable ValuesArray values) {
         this.values = values;
 
         /*
@@ -50,7 +50,7 @@ public class LoneValues implements SolverTechnique, Rules {
      * @param cells
      */
     @Override
-    public void processCellGrouping(ArrayList<Cell> cells) {
+    public void processCellGrouping(@Nullable ArrayList<Cell> cells) {
         int[][] possibilityCounts = new int[9][1];
 
         /*
@@ -58,8 +58,8 @@ public class LoneValues implements SolverTechnique, Rules {
          * occurs.
          */
         for (Cell cell : cells) {
-            for (Integer posibility : cell.getRemainingPossibilities()) {
-                possibilityCounts[posibility - 1][0]++;
+            for (Integer possibility : cell.getRemainingPossibilities()) {
+                possibilityCounts[possibility - 1][0]++;
             }
         }
 

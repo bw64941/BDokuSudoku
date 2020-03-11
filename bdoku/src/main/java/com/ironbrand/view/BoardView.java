@@ -1,39 +1,38 @@
-/**
- *
- */
 package com.ironbrand.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.BoardUtils;
 import com.ironbrand.bdokusudoku.R;
 import com.ironbrand.controller.BoardActivity;
 import com.ironbrand.controller.UIThread;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 /**
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
-
+    public static final String TAG = BoardView.class.getName();
     public static final int HIGHLIGHT = 0;
     public static final int HIGHLIGHT_HINT = 1;
     public static final int HIGHLIGHT_ERROR = 2;
@@ -59,7 +58,17 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     private Handler mHandler = new Handler();
     private long mStartTime = 0L;
     private byte[] originalStateOfBoard = null;
+    private boolean backgroundDrawn = false;
     private Runnable mUpdateTimeTask = new Runnable() {
+
+        private Activity unwrap(Context context) {
+            while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+                context = ((ContextWrapper) context).getBaseContext();
+            }
+
+            return (Activity) context;
+        }
+
         public void run() {
             final long start = mStartTime;
             long millis = System.currentTimeMillis() - start;
@@ -73,7 +82,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
             } else {
                 time = "" + minutes + ":" + seconds;
             }
-            ((BoardActivity) context).updateTimer(time);
+            ((BoardActivity) unwrap(context)).updateTimer(time);
             mHandler.postDelayed(this, 1000);
         }
     };
@@ -81,9 +90,10 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * BoardView Constructor
      *
-     * @param context
+     * @param context Application Context
+     *
      */
-    public BoardView(Context context, AttributeSet attributes) {
+    public BoardView(@Nullable Context context, @Nullable AttributeSet attributes) {
         super(context, attributes);
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -94,13 +104,14 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-//	Log.d("BoardView", "Surface Changed");
+    public void surfaceChanged(@Nullable SurfaceHolder arg0, int arg1, int arg2, int arg3) {
+        Log.d("BoardView", "Surface Changed");
+
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder arg0) {
-//	Log.d("BoardView", "Surface Created");
+    public void surfaceCreated(@Nullable SurfaceHolder arg0) {
+        Log.d("BoardView", "Surface Created");
         if (!thread.isAlive()) {
             thread = new UIThread(getHolder(), this);
             thread.setRunning(true);
@@ -112,76 +123,30 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
                 mHandler.removeCallbacks(mUpdateTimeTask);
                 mHandler.postDelayed(mUpdateTimeTask, 100);
             }
-            originalStateOfBoard = captureCanvas();
         }
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder arg0) {
+    public void surfaceDestroyed(@Nullable SurfaceHolder arg0) {
+        Log.d("BoardView", "Surface Destroyed");
         if (thread.isAlive()) {
-//	    Log.d("BoardView", "Surface Destroyed");
             thread.setRunning(false);
         }
-    }
-
-    /*
-     * Captures the bitmap drawn on the screen for Facebook share
-     */
-    public byte[] captureCanvas() {
-        bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
-        Canvas imageCanvas = new Canvas(bitmap);
-        doDraw(imageCanvas, 0, 0);
-
-        Bitmap backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bdoku_launcher);
-        int width = backgroundBitmap.getWidth();
-        int height = backgroundBitmap.getHeight();
-        int newWidth = bitmap.getWidth() + 80;
-        int newHeight = bitmap.getHeight() + 80;
-
-        // calculate the scale - in this case = 0.4f
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-        // createa matrix for the manipulation
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        final Bitmap resizedBitmap = Bitmap.createBitmap(backgroundBitmap, 0, 0, width, height, matrix, true);
-
-        // createa matrix for the manipulation
-        Matrix matrix2 = new Matrix();
-        matrix2.postTranslate(80, 0);
-
-        Canvas canvas2 = new Canvas(resizedBitmap);
-        canvas2.drawBitmap(bitmap, matrix2, null);
-
-        final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-
-        new Thread(new Runnable() {
-            public void run() {
-
-                new Runnable() {
-                    public void run() {
-
-                        resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                    }
-                };
-            }
-        }).start();
-
-        return (bytes.toByteArray());
     }
 
     /**
      * On touch event for board....determine cell pressed
      */
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(@Nullable MotionEvent event) {
         if (event.getAction() != MotionEvent.ACTION_DOWN) {
+            super.performClick();
             return super.onTouchEvent(event);
         }
 
         clearBoardRectangles();
 
-        if (solved == true) {
+        if (solved) {
             return super.onTouchEvent(event);
         }
 
@@ -191,6 +156,12 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         highlightSelectedArea(xPosTouched, yPosTouched, BoardView.HIGHLIGHT);
         showTouchDialog(selectedXCoordinate, selectedYCoordinate);
         return true;
+    }
+
+    @Override
+    public boolean performClick() {
+        Log.d("BoardView", "PerformClick");
+        return super.performClick();
     }
 
     /**
@@ -247,7 +218,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      */
     public void setValueInSelectedCell(int possibilityChosen) {
         boardUtils.setValueAtCell(selectedYCoordinate, selectedXCoordinate, possibilityChosen);
-        if (boardUtils.isBoardSolved() == true) {
+        if (boardUtils.isBoardSolved()) {
             ((BoardActivity) context).setSolvedOn();
             solved = true;
         }
@@ -257,10 +228,9 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /*
      * Re-draw the board.
      *
-     * @see android.view.View#onDraw(android.graphics.Canvas)
      */
-    public void doDraw(Canvas canvas, float xOffset, float yOffset) {
-
+    public void doDraw(@Nullable Canvas canvas, float xOffset, float yOffset) {
+//        Log.d("BoardView", "doDraw");
         // Always draw system placed values.
         drawBackground(canvas, xOffset, yOffset);
         drawSystemPlacedValues(canvas);
@@ -287,8 +257,6 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
             float y = cellHeight / 2 - (fm.ascent + fm.descent) / 2;
 
             canvas.drawText(hintValue, hintCell.left + x, hintCell.top + y, foreground);
-            // imageCanvas.drawText(hintValue, hintCell.left + x, hintCell.top +
-            // y, foreground);
             foreground.setAlpha(foreground.getAlpha() - 1);
         }
 
@@ -296,30 +264,28 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         Paint selected = new Paint();
         selected.setColor(getResources().getColor(R.color.highlightColor, null));
         canvas.drawRect(selectedRow, selected);
-        // imageCanvas.drawRect(selectedRow, selected);
         canvas.drawRect(selectedCol, selected);
-        // imageCanvas.drawRect(selectedCol, selected);
 
         // Draw the error Cell, if it exists...
         Paint error = new Paint();
         error.setColor(getResources().getColor(R.color.errorHighlightColor, null));
         canvas.drawRect(errorCell, error);
-        // imageCanvas.drawRect(errorCell, error);
     }
 
     /*
      * Re-draw the board background.
      */
     private void drawBackground(Canvas canvas, float xOffset, float yOffset) {
+//         Log.d("BoardView", "drawBackground");
         cellWidth = (this.getWidth() / (float) 9) - 1;
         cellHeight = (this.getHeight() / (float) 9) - 1;
+
         // Draw the background...
         Paint background = new Paint();
         background.setColor(getResources().getColor(R.color.white, null));
         background.setAntiAlias(true);
         background.setShadowLayer(cellWidth / 30, cellWidth / 30, cellWidth / 30, Color.BLACK);
         canvas.drawRect(xOffset, yOffset, getWidth(), getHeight(), background);
-        // imageCanvas.drawRect(0, 0, getWidth(), getHeight(), background);
 
         // Define colors for the grid lines
         Paint dark = new Paint();
@@ -338,18 +304,10 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         for (int i = 0; i <= 10; i++) {
             if (i % 3 == 0) {
                 canvas.drawLine(0, i * cellHeight, getWidth(), i * cellHeight, dark);
-                // imageCanvas.drawLine(0, i * cellHeight, getWidth(), i *
-                // cellHeight, dark);
                 canvas.drawLine(i * cellWidth, 0, i * cellWidth, getHeight(), dark);
-                // imageCanvas.drawLine(i * cellWidth, 0, i * cellWidth,
-                // getHeight(), dark);
             } else {
                 canvas.drawLine(0, i * cellHeight, getWidth(), i * cellHeight, light);
-                // imageCanvas.drawLine(0, i * cellHeight, getWidth(), i *
-                // cellHeight, light);
                 canvas.drawLine(i * cellWidth, 0, i * cellWidth, getHeight(), light);
-                // imageCanvas.drawLine(i * cellWidth, 0, i * cellWidth,
-                // getHeight(), light);
             }
         }
     }
@@ -374,7 +332,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         // Centering in Y: measure ascent/descent first
         float y = cellHeight / 2 - (fm.ascent + fm.descent) / 2;
 
-        if (solved == true) {
+        if (solved) {
             for (int row = 0; row < 9; row++) {
                 for (int col = 0; col < 9; col++) {
                     int value = boardUtils.getValueAtSolvedCell(row, col);
@@ -463,7 +421,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      * @param canvas
      */
     private void drawPencilValues(Canvas canvas) {
-        // Draw the possbilities for empty cells...
+        // Draw the possibilities for empty cells...
         // Define color and style for numbers
         Paint foreground_poss = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground_poss.setColor(getResources().getColor(R.color.pencilValueColor, null));
@@ -568,6 +526,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * @return the thread
      */
+    @Nullable
     public UIThread getThread() {
         return thread;
     }
@@ -576,7 +535,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      * @param thread
      *            the thread to set
      */
-    public void setThread(UIThread thread) {
+    public void setThread(@Nullable UIThread thread) {
         this.thread = thread;
     }
 
@@ -592,7 +551,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      *            the solved to set
      */
     public void setSolved(boolean solved) {
-        if (solved == true) {
+        if (solved) {
             clearBoardRectangles();
             mHandler.removeCallbacks(mUpdateTimeTask);
             boardUtils.clearUserMods();
@@ -601,23 +560,9 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     /**
-     * @return the bitmap
-     */
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    /**
-     * @param bitmap
-     *            the bitmap to set
-     */
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    /**
      * @return the mHandler
      */
+    @Nullable
     public Handler getmHandler() {
         return mHandler;
     }
@@ -626,13 +571,14 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      * @param mHandler
      *            the mHandler to set
      */
-    public void setmHandler(Handler mHandler) {
+    public void setmHandler(@Nullable Handler mHandler) {
         this.mHandler = mHandler;
     }
 
     /**
      * @return the mUpdateTimeTask
      */
+    @Nullable
     public Runnable getmUpdateTimeTask() {
         return mUpdateTimeTask;
     }
@@ -641,13 +587,14 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
      * @param mUpdateTimeTask
      *            the mUpdateTimeTask to set
      */
-    public void setmUpdateTimeTask(Runnable mUpdateTimeTask) {
+    public void setmUpdateTimeTask(@Nullable Runnable mUpdateTimeTask) {
         this.mUpdateTimeTask = mUpdateTimeTask;
     }
 
     /**
      * @return the originalStateOfBoard
      */
+    @Nullable
     public byte[] getOriginalStateOfBoard() {
         return originalStateOfBoard;
     }
@@ -655,8 +602,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * @param originalStateOfBoard the originalStateOfBoard to set
      */
-    public void setOriginalStateOfBoard(byte[] originalStateOfBoard) {
+    public void setOriginalStateOfBoard(@Nullable byte[] originalStateOfBoard) {
         this.originalStateOfBoard = originalStateOfBoard;
     }
-
 }

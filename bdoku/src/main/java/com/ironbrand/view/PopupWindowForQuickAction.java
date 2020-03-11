@@ -2,8 +2,9 @@ package com.ironbrand.view;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,8 +15,11 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
+import androidx.annotation.Nullable;
+
 import com.ironbrand.bdokusudoku.R;
 
+@SuppressWarnings("ALL")
 public class PopupWindowForQuickAction implements OnDismissListener {
     protected final View anchor;
     protected final PopupWindow window;
@@ -28,7 +32,7 @@ public class PopupWindowForQuickAction implements OnDismissListener {
      *
      * @param anchor the view that the QuickAction will be displaying 'from'
      */
-    public PopupWindowForQuickAction(View anchor) {
+    public PopupWindowForQuickAction(@Nullable View anchor) {
         this.anchor = anchor;
         this.window = new PopupWindow(anchor.getContext());
 
@@ -39,7 +43,7 @@ public class PopupWindowForQuickAction implements OnDismissListener {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
                     PopupWindowForQuickAction.this.window.dismiss();
-
+                    v.performClick();
                     return true;
                 }
 
@@ -73,13 +77,13 @@ public class PopupWindowForQuickAction implements OnDismissListener {
         onShow();
 
         if (background == null) {
-            window.setBackgroundDrawable(new BitmapDrawable());
+            window.setBackgroundDrawable(new ColorDrawable(anchor.getContext().getColor(R.color.bdoku_dark_blue)));
         } else {
             window.setBackgroundDrawable(background);
         }
 
         // if using PopupWindow#setBackgroundDrawable this is the only values of
-        // the width and hight that make it work
+        // the width and height that make it work
         // otherwise you need to set the background of the root viewgroup
         // and set the popupwindow background to an empty BitmapDrawable
 
@@ -92,16 +96,16 @@ public class PopupWindowForQuickAction implements OnDismissListener {
         window.setContentView(rootView);
     }
 
-    public void setBackgroundDrawable(Drawable background) {
+    public void setBackgroundDrawable(@Nullable Drawable background) {
         this.background = background;
     }
 
     /**
-     * Sets the content view. Probably should be called from {@link onCreate}
+     * Sets the content view.
      *
      * @param root the view the popup will display
      */
-    public void setContentView(View root) {
+    public void setContentView(@Nullable View root) {
         this.rootView = root;
 
         window.setContentView(root);
@@ -119,11 +123,11 @@ public class PopupWindowForQuickAction implements OnDismissListener {
     }
 
     /**
-     * If you want to do anything when {@link dismiss} is called
+     * If you want to do anything when dismissed
      *
      * @param listener
      */
-    public void setOnDismissListener(PopupWindow.OnDismissListener listener) {
+    public void setOnDismissListener(@Nullable OnDismissListener listener) {
         window.setOnDismissListener(listener);
     }
 
@@ -178,7 +182,9 @@ public class PopupWindowForQuickAction implements OnDismissListener {
         int rootWidth = rootView.getMeasuredWidth();
         int rootHeight = rootView.getMeasuredHeight();
 
-        int screenWidth = windowManager.getDefaultDisplay().getWidth();
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displaymetrics);
+        int screenWidth = displaymetrics.widthPixels;
 
         int xPos = ((screenWidth - rootWidth) / 2) + xOffset;
         int yPos = anchorRect.top - rootHeight + yOffset;

@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.engine;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Cell;
 import com.ironbrand.model.engine.SolverTechnique.CellModStatus;
@@ -26,12 +25,12 @@ public class SolverStep {
     public static final String HIDDEN_TRIPLE_IN_ROW = "HIDDEN TRIPLE IN ROW";
     public static final String USER_PLACED = "USER PLACED";
     public static final String SYSTEM_POSSIBILITY_REMOVED = "SYSTEM REMOVED";
-    private String algorithm = "ALGORITHM NOT DEFINED";
-    private Cell cell = null;
-    private CellModStatus action = null;
-    private int value = 0;
+    private String algorithm;
+    private Cell cell;
+    private CellModStatus action;
+    private int value;
 
-    public SolverStep(Cell cell, CellModStatus action, int value, String algorithm) {
+    public SolverStep(@Nullable Cell cell, @Nullable CellModStatus action, int value, @Nullable String algorithm) {
         this.cell = cell;
         this.action = action;
         this.value = value;
@@ -41,6 +40,7 @@ public class SolverStep {
     /**
      * @return the cell
      */
+    @Nullable
     public Cell getCell() {
         return cell;
     }
@@ -49,13 +49,14 @@ public class SolverStep {
      * @param cell
      *            the cell to set
      */
-    public void setCell(Cell cell) {
+    public void setCell(@Nullable Cell cell) {
         this.cell = cell;
     }
 
     /**
      * @return the action
      */
+    @Nullable
     public CellModStatus getAction() {
         return action;
     }
@@ -64,7 +65,7 @@ public class SolverStep {
      * @param action
      *            the action to set
      */
-    public void setAction(CellModStatus action) {
+    public void setAction(@Nullable CellModStatus action) {
         this.action = action;
     }
 
@@ -86,6 +87,7 @@ public class SolverStep {
     /**
      * @return the algorithm
      */
+    @Nullable
     public String getAlgorithm() {
         return algorithm;
     }
@@ -94,7 +96,7 @@ public class SolverStep {
      * @param algorithm
      *            the algorithm to set
      */
-    public void setAlgorithm(String algorithm) {
+    public void setAlgorithm(@Nullable String algorithm) {
         this.algorithm = algorithm;
     }
 }

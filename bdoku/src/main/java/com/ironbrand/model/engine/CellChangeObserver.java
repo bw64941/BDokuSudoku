@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.engine;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Cell;
 import com.ironbrand.bdokusudoku.ValuesArray;
@@ -16,12 +15,12 @@ import java.util.Observer;
  */
 public class CellChangeObserver implements Observer {
 
-    private ValuesArray values = null;
+    private final ValuesArray values;
 
     /*
      * BoardChangeListener
      */
-    public CellChangeObserver(ValuesArray values) {
+    public CellChangeObserver(@Nullable ValuesArray values) {
         this.values = values;
     }
 
@@ -31,7 +30,7 @@ public class CellChangeObserver implements Observer {
      * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
      */
     @Override
-    public synchronized void update(Observable o, Object cellChanged) {
+    public synchronized void update(@Nullable Observable o, @Nullable Object cellChanged) {
         /*
          * If cell object passed in, then setValue or removePossibility was
          * called from solver.

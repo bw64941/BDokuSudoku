@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/splashLayout"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-
-    android:gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/imageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/majorBoardGridLinesColor">
+        android:layout_gravity="top"
+        android:background="@color/bdoku_dark_blue">
 
 
         <ImageView
@@ -21,6 +18,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
             android:contentDescription="@string/clearButtonText"
             android:src="@drawable/splash_board" />
 
@@ -30,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/splashImage"
             android:layout_centerInParent="true"
-            android:layout_margin="5dp"
+            android:layout_margin="20dp"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="15dp"
@@ -106,7 +104,6 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/versionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/exit_button"
@@ -123,11 +120,18 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/footer2"
+        android:id="@+id/bottomFrame"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/splashButtonLayout"
         android:background="@drawable/popup_bottom_frame"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bottomFrame"
+        android:background="@color/bdoku_dark_blue"
         android:orientation="horizontal" />
 
 </RelativeLayout>

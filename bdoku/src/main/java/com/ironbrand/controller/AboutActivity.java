@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.ironbrand.bdokusudoku.R;
+
+import java.util.Objects;
 
 public class AboutActivity extends Activity {
 
@@ -20,13 +24,13 @@ public class AboutActivity extends Activity {
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         LayoutInflater layout = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View aboutDialog = layout.inflate(R.layout.about, null);
+        View aboutDialog = Objects.requireNonNull(layout).inflate(R.layout.about, null);
 
         TextView textView = aboutDialog.findViewById(R.id.about_content);
         textView.setMovementMethod(new ScrollingMovementMethod());

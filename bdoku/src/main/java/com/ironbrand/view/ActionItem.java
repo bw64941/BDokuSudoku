@@ -4,7 +4,9 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class ActionItem {
+import androidx.annotation.Nullable;
+
+class ActionItem {
     private Drawable icon;
     private String title;
     private OnClickListener listener;
@@ -16,19 +18,11 @@ public class ActionItem {
     }
 
     /**
-     * Constructor
-     *
-     * @param icon {@link Drawable} action icon
-     */
-    public ActionItem(Drawable icon) {
-        this.icon = icon;
-    }
-
-    /**
      * Get action title
      *
      * @return action title
      */
+    @Nullable
     public String getTitle() {
         return this.title;
     }
@@ -38,7 +32,7 @@ public class ActionItem {
      *
      * @param title action title
      */
-    public void setTitle(String title) {
+    public void setTitle(@Nullable String title) {
         this.title = title;
     }
 
@@ -47,17 +41,9 @@ public class ActionItem {
      *
      * @return {@link Drawable} action icon
      */
+    @Nullable
     public Drawable getIcon() {
         return this.icon;
-    }
-
-    /**
-     * Set action icon
-     *
-     * @param icon {@link Drawable} action icon
-     */
-    public void setIcon(Drawable icon) {
-        this.icon = icon;
     }
 
     /**
@@ -65,7 +51,7 @@ public class ActionItem {
      *
      * @param listener on click listener {@link View.OnClickListener}
      */
-    public void setOnClickListener(OnClickListener listener) {
+    public void setOnClickListener(@Nullable OnClickListener listener) {
         this.listener = listener;
     }
 
@@ -74,6 +60,7 @@ public class ActionItem {
      *
      * @return on click listener {@link View.OnClickListener}
      */
+    @Nullable
     public OnClickListener getListener() {
         return this.listener;
     }

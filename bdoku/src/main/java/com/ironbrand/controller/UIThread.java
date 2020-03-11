@@ -1,10 +1,9 @@
-/**
- *
- */
 package com.ironbrand.controller;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.view.BoardView;
 
@@ -15,10 +14,14 @@ import com.ironbrand.view.BoardView;
 public class UIThread extends Thread {
 
     private SurfaceHolder surfaceHolder;
-    private BoardView boardView;
+    /**
+     * Time per frame for 60 FPS
+     */
+    private static final int MAX_FRAME_TIME = (int) (1000.0 / 30.0);
     private boolean isRunning = false;
+    private final BoardView boardView;
 
-    public UIThread(SurfaceHolder surfaceHolder, BoardView boardView) {
+    public UIThread(@Nullable SurfaceHolder surfaceHolder, @Nullable BoardView boardView) {
         this.surfaceHolder = surfaceHolder;
         this.boardView = boardView;
     }
@@ -33,31 +36,48 @@ public class UIThread extends Thread {
 
     @Override
     public void run() {
-        Canvas canvas;
+        long frameStartTime;
+        long frameTime;
+
         while (isRunning) {
-            canvas = null;
+            frameStartTime = System.nanoTime();
+            final Canvas canvas = surfaceHolder.lockCanvas(null);
             try {
-                canvas = surfaceHolder.lockCanvas(null);
                 synchronized (surfaceHolder) {
                     if (canvas != null) {
                         boardView.doDraw(canvas, 0, 0);
                         if (boardView.isSolved()) {
                             isRunning = false;
                         }
+
                     }
                 }
-
             } finally {
                 if (canvas != null) {
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }
             }
+
+
+            // calculate the time required to draw the frame in ms
+            frameTime = (System.nanoTime() - frameStartTime) / 1000000;
+
+            if (frameTime < MAX_FRAME_TIME) // faster than the max fps - limit the FPS
+            {
+                try {
+                    Thread.sleep(MAX_FRAME_TIME - frameTime);
+                } catch (InterruptedException e) {
+                    // ignore
+                }
+            }
+
         }
     }
 
     /**
      * @return the surfaceHolder
      */
+    @Nullable
     public SurfaceHolder getSurfaceHolder() {
         return surfaceHolder;
     }
@@ -66,7 +86,7 @@ public class UIThread extends Thread {
      * @param surfaceHolder
      *            the surfaceHolder to set
      */
-    public void setSurfaceHolder(SurfaceHolder surfaceHolder) {
+    public void setSurfaceHolder(@Nullable SurfaceHolder surfaceHolder) {
         this.surfaceHolder = surfaceHolder;
     }
 

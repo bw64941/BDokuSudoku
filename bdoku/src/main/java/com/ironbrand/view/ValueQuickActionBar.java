@@ -1,10 +1,9 @@
-/**
- *
- */
 package com.ironbrand.view;
 
 import android.view.View;
 import android.widget.PopupWindow.OnDismissListener;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.R;
@@ -17,11 +16,11 @@ import java.util.ArrayList;
  */
 public class ValueQuickActionBar extends QuickAction implements OnDismissListener {
 
-    private ArrayList<ActionItem> valuesArray = new ArrayList<ActionItem>();
-    private ActionItem clearActionItem = new ActionItem();
+    private final ArrayList<ActionItem> valuesArray = new ArrayList<>();
+    private final ActionItem clearActionItem = new ActionItem();
     private int selectedValue = -99;
 
-    public ValueQuickActionBar(View anchor, ArrayList<Integer> userPencilValues) {
+    public ValueQuickActionBar(@Nullable View anchor, @Nullable ArrayList<Integer> userPencilValues) {
         super(anchor);
         obtainPossibilityButtons();
         this.setOnDismissListener(this);

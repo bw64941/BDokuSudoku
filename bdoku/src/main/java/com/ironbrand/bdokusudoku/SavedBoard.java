@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
+
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -21,7 +20,7 @@ public class SavedBoard {
     private ArrayList<Integer> userPlacedValues = null;
     private ArrayList<ArrayList<Integer>> userPlacedPencilValuesIndex = null;
 
-    public SavedBoard(String boardSequenceString, String boardDescriptionString, String boardValuesString, String pencilValuesString) {
+    public SavedBoard(@Nullable String boardSequenceString, @Nullable String boardDescriptionString, @Nullable String boardValuesString, @Nullable String pencilValuesString) {
         this.setBoardSequenceString(boardSequenceString);
         this.setBoardDescriptionString(boardDescriptionString);
         this.setBoardValuesString(boardValuesString);
@@ -34,6 +33,7 @@ public class SavedBoard {
     /**
      * @return the boardSequenceString
      */
+    @Nullable
     public String getBoardSequenceString() {
         return boardSequenceString;
     }
@@ -42,13 +42,14 @@ public class SavedBoard {
      * @param boardSequenceString
      *            the boardSequenceString to set
      */
-    public void setBoardSequenceString(String boardSequenceString) {
+    private void setBoardSequenceString(@Nullable String boardSequenceString) {
         this.boardSequenceString = boardSequenceString;
     }
 
     /**
      * @return the boardDescriptionString
      */
+    @Nullable
     public String getBoardDescriptionString() {
         return boardDescriptionString;
     }
@@ -57,13 +58,14 @@ public class SavedBoard {
      * @param boardDescriptionString
      *            the boardDescriptionString to set
      */
-    public void setBoardDescriptionString(String boardDescriptionString) {
+    private void setBoardDescriptionString(@Nullable String boardDescriptionString) {
         this.boardDescriptionString = boardDescriptionString;
     }
 
     /**
      * @return the boardValuesString
      */
+    @Nullable
     public String getBoardValuesString() {
         return boardValuesString;
     }
@@ -72,13 +74,14 @@ public class SavedBoard {
      * @param boardValuesString
      *            the boardValuesString to set
      */
-    public void setBoardValuesString(String boardValuesString) {
+    private void setBoardValuesString(@Nullable String boardValuesString) {
         this.boardValuesString = boardValuesString;
     }
 
     /**
      * @return the pencilValuesString
      */
+    @Nullable
     public String getPencilValuesString() {
         return pencilValuesString;
     }
@@ -87,7 +90,7 @@ public class SavedBoard {
      * @param pencilValuesString
      *            the pencilValuesString to set
      */
-    public void setPencilValuesString(String pencilValuesString) {
+    private void setPencilValuesString(@Nullable String pencilValuesString) {
         this.pencilValuesString = pencilValuesString;
     }
 
@@ -102,8 +105,8 @@ public class SavedBoard {
             for (int j = 0; j < Board.COLUMNS; j++) {
                 // skip the * at the beginning for user placed values.
                 String cellValueString = tokenizer.nextToken();
-                int cellValue = 0;
-                if (cellValueString.indexOf(BoardSaver.CELL_USER_VALUE_INDICATOR) == -1) {
+                int cellValue;
+                if (!cellValueString.contains(BoardSaver.CELL_USER_VALUE_INDICATOR)) {
                     cellValue = Integer.parseInt(cellValueString);
                 } else {
                     cellValue = Integer.parseInt(cellValueString.substring(1));
@@ -117,14 +120,14 @@ public class SavedBoard {
      * Get int[][] array values with specified Difficulty
      */
     private void populateUserPlacedValues() {
-        userPlacedValues = new ArrayList<Integer>();
+        userPlacedValues = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(boardValuesString, ",");
 
         int cellIndex = 0;
         while (tokenizer.hasMoreTokens()) {
             String cellValueString = tokenizer.nextToken();
             if (cellValueString.indexOf('*') != -1) {
-                userPlacedValues.add(new Integer(cellIndex));
+                userPlacedValues.add(cellIndex);
             }
             cellIndex++;
         }
@@ -134,19 +137,19 @@ public class SavedBoard {
      * Get int[][] array values with specified Difficulty
      */
     private void pencilValuesToArrayList() {
-        userPlacedPencilValuesIndex = new ArrayList<ArrayList<Integer>>();
-        StringTokenizer tokenizer = new StringTokenizer(pencilValuesString, BoardSaver.PENCIL_VALUES_CELL_DELIMETER);
+        userPlacedPencilValuesIndex = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(pencilValuesString, BoardSaver.PENCIL_VALUES_CELL_DELIMITER);
 
         while (tokenizer.hasMoreTokens()) {
             String cellPossibilitiesList = tokenizer.nextToken();
 
             StringTokenizer tokenizer2 = new StringTokenizer(cellPossibilitiesList, ",");
-            ArrayList<Integer> values = new ArrayList<Integer>();
+            ArrayList<Integer> values = new ArrayList<>();
 
             while (tokenizer2.hasMoreTokens()) {
                 String possibilityValue = tokenizer2.nextToken();
                 if (!possibilityValue.equals(" ")) {
-                    values.add(new Integer(possibilityValue));
+                    values.add(Integer.valueOf(possibilityValue));
                 }
             }
 
@@ -157,6 +160,7 @@ public class SavedBoard {
     /**
      * @return the arrayValues
      */
+    @Nullable
     public int[][] getArrayValues() {
         return arrayValues;
     }
@@ -165,13 +169,14 @@ public class SavedBoard {
      * @param arrayValues
      *            the arrayValues to set
      */
-    public void setArrayValues(int[][] arrayValues) {
+    public void setArrayValues(@Nullable int[][] arrayValues) {
         this.arrayValues = arrayValues;
     }
 
     /**
      * @return the userPlacedValues
      */
+    @Nullable
     public ArrayList<Integer> getUserPlacedValues() {
         return userPlacedValues;
     }
@@ -180,13 +185,14 @@ public class SavedBoard {
      * @param userPlacedValues
      *            the userPlacedValues to set
      */
-    public void setUserPlacedValues(ArrayList<Integer> userPlacedValues) {
+    public void setUserPlacedValues(@Nullable ArrayList<Integer> userPlacedValues) {
         this.userPlacedValues = userPlacedValues;
     }
 
     /**
      * @return the userPlacedPencilValuesIndex
      */
+    @Nullable
     public ArrayList<ArrayList<Integer>> getUserPlacedPencilValuesIndex() {
         return userPlacedPencilValuesIndex;
     }
@@ -195,13 +201,14 @@ public class SavedBoard {
      * @param userPlacedPencilValuesIndex
      *            the userPlacedPencilValuesIndex to set
      */
-    public void setUserPlacedPencilValuesIndex(ArrayList<ArrayList<Integer>> userPlacedPencilValuesIndex) {
+    public void setUserPlacedPencilValuesIndex(@Nullable ArrayList<ArrayList<Integer>> userPlacedPencilValuesIndex) {
         this.userPlacedPencilValuesIndex = userPlacedPencilValuesIndex;
     }
 
     /**
      * @return the solvedValuesString
      */
+    @Nullable
     public String getSolvedValuesString() {
         return solvedValuesString;
     }
@@ -210,7 +217,7 @@ public class SavedBoard {
      * @param solvedValuesString
      *            the solvedValuesString to set
      */
-    public void setSolvedValuesString(String solvedValuesString) {
+    public void setSolvedValuesString(@Nullable String solvedValuesString) {
         this.solvedValuesString = solvedValuesString;
     }
 }

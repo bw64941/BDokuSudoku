@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.bdokusudoku;
+
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -10,6 +9,7 @@ import java.util.Observable;
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class Cell extends Observable {
 
     private int value = 0;
@@ -29,7 +29,7 @@ public class Cell extends Observable {
         this.row = row;
         this.col = col;
         initializeRemainingPossibilities();
-        initilizeQuadrantValue();
+        initializeQuadrantValue();
     }
 
     /**
@@ -37,52 +37,52 @@ public class Cell extends Observable {
      */
     private void initializeRemainingPossibilities() {
         for (int i = 1; i <= Board.ROWS; i++) {
-            remainingPossibilities.add(new Integer(i));
+            remainingPossibilities.add(Integer.valueOf(i));
         }
     }
 
     /**
      * Assigns quadrant values to the cell
      */
-    private void initilizeQuadrantValue() {
+    private void initializeQuadrantValue() {
         // Quadrant 0
-        double squarRootOfBoard = Math.sqrt(Board.ROWS);
-        if (this.row <= (int) squarRootOfBoard - 1 && this.col <= (int) squarRootOfBoard - 1) {
+        double squareRootOfBoard = Math.sqrt(Board.ROWS);
+        if (this.row <= (int) squareRootOfBoard - 1 && this.col <= (int) squareRootOfBoard - 1) {
             this.quad = 0;
         }
         // Quadrant 1
-        else if (this.row <= (int) squarRootOfBoard - 1 && (col >= (int) squarRootOfBoard && col <= (int) squarRootOfBoard + 2)) {
-            this.quad = (int) squarRootOfBoard - 2;
+        else if (this.row <= (int) squareRootOfBoard - 1 && (col >= (int) squareRootOfBoard && col <= (int) squareRootOfBoard + 2)) {
+            this.quad = (int) squareRootOfBoard - 2;
         }
         // Quadrant 2
-        else if (this.row <= (int) squarRootOfBoard - 1 && (col >= (int) squarRootOfBoard + 3 && col <= (int) squarRootOfBoard + 5)) {
-            this.quad = (int) squarRootOfBoard - 1;
+        else if (this.row <= (int) squareRootOfBoard - 1 && (col >= (int) squareRootOfBoard + 3 && col <= (int) squareRootOfBoard + 5)) {
+            this.quad = (int) squareRootOfBoard - 1;
         }
         // Quadrant 3
-        else if ((this.row >= (int) squarRootOfBoard && this.row <= (int) squarRootOfBoard + 2) && (this.col <= (int) squarRootOfBoard - 1)) {
-            this.quad = (int) squarRootOfBoard;
+        else if ((this.row >= (int) squareRootOfBoard && this.row <= (int) squareRootOfBoard + 2) && (this.col <= (int) squareRootOfBoard - 1)) {
+            this.quad = (int) squareRootOfBoard;
         }
         // Quadrant 4
-        else if ((this.row >= (int) squarRootOfBoard && this.row <= (int) squarRootOfBoard + 2)
-                && (this.col >= (int) squarRootOfBoard && this.col <= (int) squarRootOfBoard + 2)) {
-            this.quad = (int) squarRootOfBoard + 1;
+        else if ((this.row >= (int) squareRootOfBoard && this.row <= (int) squareRootOfBoard + 2)
+                && (this.col >= (int) squareRootOfBoard && this.col <= (int) squareRootOfBoard + 2)) {
+            this.quad = (int) squareRootOfBoard + 1;
         }
         // Quadrant 5
-        else if ((this.row >= (int) squarRootOfBoard && this.row <= (int) squarRootOfBoard + 2)
-                && (this.col >= (int) squarRootOfBoard + 3 && this.col <= (int) squarRootOfBoard + 5)) {
-            this.quad = (int) squarRootOfBoard + 2;
+        else if ((this.row >= (int) squareRootOfBoard && this.row <= (int) squareRootOfBoard + 2)
+                && (this.col >= (int) squareRootOfBoard + 3 && this.col <= (int) squareRootOfBoard + 5)) {
+            this.quad = (int) squareRootOfBoard + 2;
         }
         // Quadrant 6
-        else if ((this.row >= (int) squarRootOfBoard + 3 && this.col <= (int) squarRootOfBoard - 1)) {
-            this.quad = (int) squarRootOfBoard + 3;
+        else if ((this.row >= (int) squareRootOfBoard + 3 && this.col <= (int) squareRootOfBoard - 1)) {
+            this.quad = (int) squareRootOfBoard + 3;
         }
         // Quadrant 7
-        else if ((this.row >= (int) squarRootOfBoard + 3) && (this.col >= (int) squarRootOfBoard && this.col <= (int) squarRootOfBoard + 2)) {
-            this.quad = (int) squarRootOfBoard + 4;
+        else if ((this.row >= (int) squareRootOfBoard + 3) && (this.col >= (int) squareRootOfBoard && this.col <= (int) squareRootOfBoard + 2)) {
+            this.quad = (int) squareRootOfBoard + 4;
         }
         // Quadrant 8
-        else if (this.row >= (int) squarRootOfBoard + 3 && this.col >= (int) squarRootOfBoard + 3) {
-            this.quad = (int) squarRootOfBoard + 5;
+        else if (this.row >= (int) squareRootOfBoard + 3 && this.col >= (int) squareRootOfBoard + 3) {
+            this.quad = (int) squareRootOfBoard + 5;
         }
     }
 
@@ -91,9 +91,9 @@ public class Cell extends Observable {
      *
      * @return
      */
+    @Nullable
     public String getCoordinates() {
-        String coord = "[" + this.quad + "," + this.row + "," + this.col + "]";
-        return coord;
+        return "[" + this.quad + "," + this.row + "," + this.col + "]";
     }
 
     /**
@@ -120,11 +120,10 @@ public class Cell extends Observable {
     /**
      * Removes the specified possibility from the cells possible values.
      *
-     * @param notPosibleInt
-     * @param stepSolve
+     * @param notPossibleInt
      */
     public void removePossibility(int notPossibleInt) {
-        remainingPossibilities.remove(new Integer(notPossibleInt));
+        remainingPossibilities.remove(Integer.valueOf(notPossibleInt));
     }
 
     /**
@@ -139,11 +138,10 @@ public class Cell extends Observable {
     /**
      * Removes the specified possibility from the cells pencil values.
      *
-     * @param notPosibleInt
-     * @param stepSolve
+     * @param notPossibleInt
      */
     public void removeUserPencilPossibility(int notPossibleInt) {
-        userPlacedPencilValues.remove(new Integer(notPossibleInt));
+        userPlacedPencilValues.remove(Integer.valueOf(notPossibleInt));
     }
 
     /**
@@ -270,6 +268,7 @@ public class Cell extends Observable {
     /**
      * @return the remainingPossibilities
      */
+    @Nullable
     public ArrayList<Integer> getRemainingPossibilities() {
         return remainingPossibilities;
     }
@@ -278,13 +277,14 @@ public class Cell extends Observable {
      * @param remainingPossibilities
      *            the remainingPossibilities to set
      */
-    public void setRemainingPossibilities(ArrayList<Integer> remainingPossibilities) {
+    public void setRemainingPossibilities(@Nullable ArrayList<Integer> remainingPossibilities) {
         this.remainingPossibilities = remainingPossibilities;
     }
 
     /**
      * @return the userPencilValues
      */
+    @Nullable
     public ArrayList<Integer> getUserPencilValues() {
         return userPlacedPencilValues;
     }
@@ -293,7 +293,7 @@ public class Cell extends Observable {
      * @param userPencilValues
      *            the userPlacedPencilValues to set
      */
-    public void setUserPencilValues(ArrayList<Integer> userPencilValues) {
+    public void setUserPencilValues(@Nullable ArrayList<Integer> userPencilValues) {
         this.userPlacedPencilValues = userPencilValues;
     }
 

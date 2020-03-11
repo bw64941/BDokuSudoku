@@ -1,7 +1,6 @@
-/**
- *
- */
 package com.ironbrand.model.technique;
+
+import androidx.annotation.Nullable;
 
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.Cell;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
  * @author bwinters
  *
  */
+@SuppressWarnings("ALL")
 public class OnlyChoiceLeft implements SolverTechnique, Rules {
 
     public static final String TECHNIQUE = "ONLY CHOICE LEFT";
@@ -27,7 +27,7 @@ public class OnlyChoiceLeft implements SolverTechnique, Rules {
      * @see com.model.SolverTechnique#executeTechnique(com.model.ValuesArrays)
      */
     @Override
-    public void executeTechnique(ValuesArray values) {
+    public void executeTechnique(@Nullable ValuesArray values) {
         this.values = values;
 
         /*
@@ -47,7 +47,7 @@ public class OnlyChoiceLeft implements SolverTechnique, Rules {
      * @param cells
      */
     @Override
-    public void processCellGrouping(ArrayList<Cell> cells) {
+    public void processCellGrouping(@Nullable ArrayList<Cell> cells) {
         int[] allPossibleValues = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         /*

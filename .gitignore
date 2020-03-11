@@ -9,3 +9,5 @@ build/
 bdoku/build/
 bdoku/bdoku.iml
 gradlew.bat
+BDokuSudoku.iml
+gradle/

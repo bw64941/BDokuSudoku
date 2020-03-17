@@ -13,7 +13,7 @@ import com.ironbrand.view.BoardView;
  */
 public class UIThread extends Thread {
 
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     /**
      * Time per frame for 60 FPS
      */
@@ -22,7 +22,7 @@ public class UIThread extends Thread {
     private final BoardView boardView;
 
     public UIThread(@Nullable SurfaceHolder surfaceHolder, @Nullable BoardView boardView) {
-        this.surfaceHolder = surfaceHolder;
+        this.surfaceHolder = boardView.getHolder();
         this.boardView = boardView;
     }
 
@@ -81,13 +81,4 @@ public class UIThread extends Thread {
     public SurfaceHolder getSurfaceHolder() {
         return surfaceHolder;
     }
-
-    /**
-     * @param surfaceHolder
-     *            the surfaceHolder to set
-     */
-    public void setSurfaceHolder(@Nullable SurfaceHolder surfaceHolder) {
-        this.surfaceHolder = surfaceHolder;
-    }
-
 }

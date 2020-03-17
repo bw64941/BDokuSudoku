@@ -1,69 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/boardLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     android:orientation="vertical">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
+    <LinearLayout
+        android:id="@+id/topPanelHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/interstitial_ad_unit_id" />
+        android:layout_height="15dp"
+        android:background="@drawable/bdoku_divider"
+        android:orientation="vertical" />
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/topPanelLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/bdoku_dark_blue"
         android:orientation="horizontal"
         android:padding="10dp">
 
-
-        <TextView
-            android:id="@+id/difficultyChosen"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/alfa_slab_one"
-            android:text="@string/difficultyChosen"
-            android:textColor="@color/bdoku_light_blue"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/hintButton"
+        <FrameLayout
+            android:id="@+id/hintButtonAdIcon"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bdoku_btn"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/alfa_slab_one"
-            android:gravity="center"
-            android:layout_toEndOf="@+id/difficultyChosen"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="@string/hintButtonText"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/hintButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bdoku_btn"
+                android:fontFamily="@font/alfa_slab_one"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/hintButtonText"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <ImageView
+                android:id="@+id/play_ad_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="top|end"
+                android:adjustViewBounds="true"
+                android:background="@color/bdoku_dark_blue"
+                android:contentDescription="@string/hintButtonText"
+                android:rotation="22"
+                android:scaleType="fitStart"
+                android:src="@drawable/bdoku_watch_ad_icon"
+                android:translationZ="@android:dimen/app_icon_size" />
+
+        </FrameLayout>
 
         <Button
             android:id="@+id/solveButton"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/hintButton"
-            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/hintButtonAdIcon"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
-            android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="@string/solveButtonText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/solveButton"
+            android:background="@drawable/bdoku_btn"
+            android:fontFamily="@font/alfa_slab_one"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/undoButtonText"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -71,11 +88,26 @@
             android:id="@+id/timerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/undo"
+            android:gravity="end"
             android:fontFamily="@font/alfa_slab_one"
-            android:layout_toEndOf="@+id/solveButton"
             android:text="@string/timerText"
+            android:textColor="@color/bdoku_light_blue"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/difficultyChosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timerText"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/undo"
+            android:fontFamily="@font/alfa_slab_one"
+            android:gravity="end"
+            android:text="@string/difficultyChosen"
             android:textColor="@color/bdoku_light_blue"
             android:textSize="20sp" />
 
@@ -83,31 +115,19 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/popup_top_frame"
-        android:orientation="horizontal" />
-
-
-    <RelativeLayout
+        android:id="@+id/bottomDivTopPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top">
-
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/popup_top_frame"
-            android:orientation="horizontal" />
+        android:layout_height="15dp"
+        android:background="@drawable/bdoku_divider"
+        android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/boardLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="475dp"
-            android:layout_below="@+id/header"
-            android:clipToPadding="true"
-            android:orientation="horizontal">
+            android:background="@drawable/bdoku_board_border"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <view
                 android:id="@+id/boardView"
@@ -116,112 +136,72 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/bdoku_dark_blue"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/footer"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/boardLinearLayout"
-            android:background="@drawable/popup_bottom_frame"
-            android:orientation="horizontal" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-
-        <LinearLayout
-            android:id="@+id/header2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/popup_top_frame"
+            android:layout_height="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bdoku_divider"
             android:orientation="horizontal" />
 
+        <ImageButton
+            android:id="@+id/validate"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="25dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bdoku_btn"
+            android:contentDescription="@string/checkWorkText"
+            android:scaleType="fitCenter"
+            android:src="@drawable/check_button" />
 
-        <RelativeLayout
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_below="@+id/header2"
-            android:layout_gravity="center_vertical"
-            android:background="@color/bdoku_dark_blue"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="visible"
-            tools:visibility="visible">
+        <ToggleButton
+            android:id="@+id/pencilToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@id/validate"
+            android:background="@drawable/pencil_button"
+            android:checked="false"
+            android:textOff="@string/pencilButtonText"
+            android:textOn="@string/pencilButtonText" />
 
-
-            <Button
-                android:id="@+id/validate"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/check_button"
-                android:gravity="center"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
-
-            <ToggleButton
-                android:id="@+id/pencilToggle"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginEnd="25dp"
-                android:layout_toEndOf="@id/validate"
-                android:background="@drawable/edit_button"
-                android:checked="false"
-                android:gravity="center"
-                android:maxWidth="100dip"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:textOff="@string/pencilButtonText"
-                android:textOn="@string/pencilButtonText" />
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginEnd="25dp"
-                android:layout_toEndOf="@id/pencilToggle"
-                android:background="@drawable/save_button"
-                android:gravity="center"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp" />
-
-            <Button
-                android:id="@+id/undo"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginEnd="25dp"
-                android:layout_toEndOf="@id/save"
-                android:background="@drawable/undo_button"
-                android:gravity="center"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:visibility="visible" />
-
-
-        </RelativeLayout>
-
+        <ImageButton
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@id/pencilToggle"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bdoku_btn"
+            android:contentDescription="@string/saveText"
+            android:scaleType="fitCenter"
+            android:src="@drawable/save_button" />
 
         <LinearLayout
             android:id="@+id/bottomFrame"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            android:background="@drawable/popup_bottom_frame"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/bottomFrame"
-            android:background="@color/bdoku_light_blue"
+            android:layout_height="15dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bdoku_divider"
             android:orientation="horizontal" />
 
     </RelativeLayout>
+
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.ironbrand.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,17 +13,23 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.ironbrand.bdokusudoku.Board;
 import com.ironbrand.bdokusudoku.BoardOpen;
 import com.ironbrand.bdokusudoku.BoardSaver;
@@ -52,6 +59,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     private BoardView boardView = null;
     private boolean solved = false;
     private TextView timeText = null;
+    private RewardedAd rewardVideoAd;
 
     /*
      * Creates main board view and creates background board entity.
@@ -64,44 +72,28 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.board);
 
-        MobileAds.initialize(this);
-        AdView mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        mAdView.setAdListener(new AdListener() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
-            }
-
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            @Override
-            public void onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                Log.d(TAG, "Mobile Ads Initialized");
             }
         });
+
+        rewardVideoAd = new RewardedAd(this, getString(R.string.rewardedVideoAd));
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad loaded
+                Log.d(TAG, "Reward Ad Loaded");
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(int errorCode) {
+                // Ad failed to load.
+                Log.d(TAG, "Reward Ad Failed to Load " + errorCode);
+            }
+        };
+        rewardVideoAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
 
         boardView = findViewById(R.id.boardView);
 
@@ -114,7 +106,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
         Button undo = findViewById(R.id.undo);
         undo.setOnClickListener(this);
 
-        Button checkWork = findViewById(R.id.validate);
+        ImageButton checkWork = findViewById(R.id.validate);
         checkWork.setOnClickListener(this);
 
         Button solveBtn = findViewById(R.id.solveButton);
@@ -127,11 +119,9 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
         pencilToggle.setOnCheckedChangeListener(this);
 
         TextView difficultyText = findViewById(R.id.difficultyChosen);
-        //String difficultyChosen = getIntent().getStringExtra(BoardActivity.DIFFICULTY_CHOSEN);
         difficultyText.setText(String.format(getString(R.string.difficultyChosen), getIntent().getStringExtra(BoardActivity.DIFFICULTY_CHOSEN)));
 
-
-        Button save = findViewById(R.id.save);
+        ImageButton save = findViewById(R.id.save);
         save.setOnClickListener(this);
 
         Board board = (Board) getLastNonConfigurationInstance();
@@ -146,6 +136,23 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
                 boardView.requestFocus();
             }
         }
+    }
+
+    public RewardedAd createAndLoadRewardedAd() {
+        RewardedAd rewardedAd = new RewardedAd(this, getString(R.string.rewardedVideoAd));
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                Log.d(TAG, "Create and Load - Loaded");
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(int errorCode) {
+                Log.d(TAG, "Create and Load - Failed to Load " + errorCode);
+            }
+        };
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+        return rewardedAd;
     }
 
     /*
@@ -222,7 +229,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
     /**
      * Save Board
      *
-     * @return void
+     * void
      */
     private void saveBoard() {
         if (!solved) {
@@ -319,7 +326,7 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+//        Log.d("BoardActivity","onActivityResult");
     }
 
     private void showToast(final String message) {
@@ -351,10 +358,24 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
      */
     @Override
     protected void onResume() {
-        solved = board.isSolved();
-//	facebook.extendAccessTokenIfNeeded(this, null);
-        super.onResume();
         // Log.d(TAG, "Resume called");
+        solved = board.isSolved();
+        super.onResume();
+
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see android.app.Activity#onDestroy()
+     */
+    @Override
+    protected void onDestroy() {
+        if (boardView.getThread().isAlive()) {
+            boardView.getThread().setRunning(false);
+            boardView.getmHandler().removeCallbacks(boardView.getmUpdateTimeTask());
+        }
+        super.onDestroy();
     }
 
     /*
@@ -375,7 +396,39 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
         } else if (v.getId() == R.id.validate) {
             checkWorkDoneOnBoard();
         } else if (v.getId() == R.id.hintButton) {
-            getRandomHint();
+            if (rewardVideoAd.isLoaded()) {
+                RewardedAdCallback adCallback = new RewardedAdCallback() {
+
+                    @Override
+                    public void onRewardedAdOpened() {
+                        Log.d(TAG, "Reward Ad Opened");
+                        super.onRewardedAdOpened();
+                    }
+
+                    @Override
+                    public void onRewardedAdClosed() {
+                        Log.d(TAG, "Reward Ad Closed");
+                        rewardVideoAd = createAndLoadRewardedAd();
+                        super.onRewardedAdClosed();
+                    }
+
+                    @Override
+                    public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                        Log.d(TAG, "Reward Ad Earned");
+                        getRandomHint();
+                    }
+
+                    @Override
+                    public void onRewardedAdFailedToShow(int i) {
+                        Log.d(TAG, "Reward Ad Failed to Load");
+                        super.onRewardedAdFailedToShow(i);
+                    }
+                };
+                rewardVideoAd.show(this, adCallback);
+            } else {
+                Log.d(TAG, "The rewarded ad wasn't loaded yet.");
+                showToast("Cannot Retrieve Hint");
+            }
         } else if (v.getId() == R.id.solveButton) {
             this.solved = true;
             boardView.setSolved(true);
@@ -391,19 +444,4 @@ public class BoardActivity extends Activity implements OnClickListener, OnChecke
             togglePencilMode(isChecked);
         }
     }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see android.app.Activity#onDestroy()
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (boardView.getThread().isAlive()) {
-            boardView.getThread().setRunning(false);
-            boardView.getmHandler().removeCallbacks(boardView.getmUpdateTimeTask());
-        }
-    }
-
 }

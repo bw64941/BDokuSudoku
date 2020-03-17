@@ -33,6 +33,12 @@ public class PencilQuickActionBar extends QuickAction implements OnDismissListen
      * Obtain buttons from view xml.
      */
     private void obtainPencilButtons() {
+        if (pencilValues.size() == 9) {
+            allActionItem.setChecked(true);
+        }
+
+        allActionItem.setTitle(anchor.getContext().getResources().getString(R.string.allButtonText));
+
         for (int i = 1; i <= Board.ROWS; i++) {
             final ToggleItem item = new ToggleItem();
             item.setTitle(String.valueOf(i));
@@ -42,11 +48,6 @@ public class PencilQuickActionBar extends QuickAction implements OnDismissListen
             valuesArray.add(item);
         }
 
-        if (pencilValues.size() == 9) {
-            allActionItem.setChecked(true);
-        }
-
-        allActionItem.setTitle(anchor.getContext().getResources().getString(R.string.allButtonText));
         populatePencilBarListeners();
     }
 
@@ -54,16 +55,6 @@ public class PencilQuickActionBar extends QuickAction implements OnDismissListen
      * Populate action bar with 1-9 action items.
      */
     private void populatePencilBarListeners() {
-        for (final ToggleItem possibility : valuesArray) {
-            possibility.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    possibility.setChecked(isChecked);
-                }
-            });
-            this.addToggleItem(possibility);
-        }
         allActionItem.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
@@ -76,6 +67,18 @@ public class PencilQuickActionBar extends QuickAction implements OnDismissListen
             }
         });
         this.addToggleItem(allActionItem);
+
+        for (final ToggleItem possibility : valuesArray) {
+            possibility.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    possibility.setChecked(isChecked);
+                }
+            });
+            this.addToggleItem(possibility);
+        }
+
     }
 
     @Override

@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/imageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         android:background="@color/bdoku_dark_blue">
-
 
         <ImageView
             android:id="@+id/splashImage"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
             android:contentDescription="@string/clearButtonText"
@@ -26,38 +22,40 @@
             android:id="@+id/splashNameLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/splashImage"
-            android:layout_centerInParent="true"
             android:layout_margin="20dp"
+            android:layout_below="@id/splashImage"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
             android:padding="15dp"
             android:text="@string/applicationName"
             android:textColor="@color/bdoku_light_blue"
             android:textSize="40sp" />
+
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageLayout"
-        android:background="@drawable/popup_top_frame"
-        android:orientation="horizontal" />
 
     <RelativeLayout
         android:id="@+id/splashButtonLayout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/footer"
+        android:layout_height="match_parent"
         android:background="@color/bdoku_faded_blue">
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bdoku_divider"
+            android:orientation="horizontal" />
 
         <Button
             android:id="@+id/new_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/about_button"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
@@ -69,8 +67,8 @@
             android:id="@+id/about_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/new_button"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
@@ -84,7 +82,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/about_button"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
             android:background="@drawable/bdoku_btn"
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/exitButtonText"
@@ -94,10 +91,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/exit_button"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="3dp"
-            android:layout_toStartOf="@+id/exit_button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/company"
             android:textColor="@color/majorBoardGridLinesColor"
@@ -106,32 +103,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/exit_button"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="3dp"
-            android:layout_toEndOf="@+id/exit_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/alfa_slab_one"
             android:text="@string/version"
-            android:textAlignment="textEnd"
             android:textColor="@color/majorBoardGridLinesColor"
             android:textSize="12sp" />
 
-
+        <LinearLayout
+            android:id="@+id/bottomFrame"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bdoku_divider"
+            android:orientation="horizontal" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/bottomFrame"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/splashButtonLayout"
-        android:background="@drawable/popup_bottom_frame"
-        android:orientation="horizontal" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/bottomFrame"
-        android:background="@color/bdoku_dark_blue"
-        android:orientation="horizontal" />
-
-</RelativeLayout>
+</LinearLayout>

@@ -63,7 +63,7 @@ public class Board {
     }
 
     /**
-     * @return reset the board to initial state.
+     * reset the board to initial state.
      */
     public synchronized void clear() {
         values.clear();

@@ -30,12 +30,14 @@ public class ValueQuickActionBar extends QuickAction implements OnDismissListene
      * Obtain buttons from view xml.
      */
     private void obtainPossibilityButtons() {
+        clearActionItem.setTitle(anchor.getContext().getResources().getString(R.string.clearButtonText));
+
         for (int i = 1; i <= Board.ROWS; i++) {
             final ActionItem item = new ActionItem();
             item.setTitle(String.valueOf(i));
             valuesArray.add(item);
         }
-        clearActionItem.setTitle(anchor.getContext().getResources().getString(R.string.clearButtonText));
+
         populateValueBarListeners();
     }
 
@@ -43,6 +45,15 @@ public class ValueQuickActionBar extends QuickAction implements OnDismissListene
      * Populate action bar with 1-9 action items.
      */
     private void populateValueBarListeners() {
+        clearActionItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedValue = 0;
+                dismiss();
+            }
+        });
+        this.addActionItem(clearActionItem);
+
         for (ActionItem possibility : valuesArray) {
             final int possibilityChosen = Integer.valueOf(possibility.getTitle());
             possibility.setOnClickListener(new View.OnClickListener() {
@@ -53,14 +64,6 @@ public class ValueQuickActionBar extends QuickAction implements OnDismissListene
             });
             this.addActionItem(possibility);
         }
-        clearActionItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedValue = 0;
-                dismiss();
-            }
-        });
-        this.addActionItem(clearActionItem);
     }
 
     @Override

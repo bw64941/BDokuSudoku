@@ -44,18 +44,25 @@
     <string name="company">IronBrand Software</string>
 
     <!-- General -->
-    <string name="version">5.0</string>
+    <string name="version">7.0</string>
     <string name="okButtonText">OK</string>
     <string name="solvedPopupText">CONGRATULATIONS</string>
 
     <string name="solveTimeLabel">"Time %1$s"</string>
     <string name="solveButtonText">"Solve"</string>
     <string name="hintButtonText">"Hint"</string>
+    <string name="undoButtonText">"Undo"</string>
+    <string name="checkWorkText">Check Work</string>
+    <string name="saveText">Save</string>
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="admob_app_id">ca-app-pub-1524918901460976~5892911447</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-1524918901460976/8846377841</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1524918901460976/8846377841</string>
+
+    <string name="intersatial_ad_unit_id">ca-app-pub-1524918901460976/2666751432</string>
+    <string name="rewardedVideoAd">ca-app-pub-1524918901460976/5633310647</string>
+    <string name="testAd">ca-app-pub-3940256099942544/5224354917</string>
 
 </resources>

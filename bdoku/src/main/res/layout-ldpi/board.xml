@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/interstitial_ad_unit_id" />
+        ads:adUnitId="@string/banner_ad_unit_id" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -121,7 +121,7 @@
             android:layout_height="30dp"
             android:layout_marginEnd="25dp"
             android:layout_toEndOf="@id/validate"
-            android:background="@drawable/edit_button"
+            android:background="@drawable/pencil_button"
             android:checked="false"
             android:gravity="center"
             android:textOff="@string/pencilButtonText"

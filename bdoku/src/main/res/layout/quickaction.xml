@@ -7,8 +7,8 @@
     <FrameLayout
         android:id="@+id/header2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/popup_top_frame" />
+        android:layout_height="15dp"
+        android:background="@drawable/bdoku_divider" />
 
     <HorizontalScrollView
         android:id="@+id/scroll"
@@ -29,8 +29,8 @@
     <FrameLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_below="@id/scroll"
-        android:background="@drawable/popup_bottom_frame" />
+        android:background="@drawable/bdoku_divider" />
 
 </RelativeLayout>

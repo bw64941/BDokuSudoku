@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.ironbrand.bdokusudoku.BoardUtils;
 import com.ironbrand.bdokusudoku.R;
@@ -30,7 +32,6 @@ import java.util.ArrayList;
  * @author bwinters
  *
  */
-@SuppressWarnings("ALL")
 public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     public static final String TAG = BoardView.class.getName();
     public static final int HIGHLIGHT = 0;
@@ -49,7 +50,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     private UIThread thread = null;
 
     private String selectedCellValue = "";
-    private ArrayList<Integer> selectedCellPencilValues = new ArrayList<Integer>();
+    private ArrayList<Integer> selectedCellPencilValues = new ArrayList<>();
     private boolean pencilModeOn = false;
     private BoardUtils boardUtils = null;
     private boolean solved = false;
@@ -59,6 +60,11 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     private long mStartTime = 0L;
     private byte[] originalStateOfBoard = null;
     private boolean backgroundDrawn = false;
+
+    private Paint selected = null;
+    private Paint error = null;
+    private Paint hint = null;
+
     private Runnable mUpdateTimeTask = new Runnable() {
 
         private Activity unwrap(Context context) {
@@ -97,10 +103,22 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         super(context, attributes);
         setFocusable(true);
         setFocusableInTouchMode(true);
+
         getHolder().addCallback(this);
         thread = new UIThread(getHolder(), this);
         boardUtils = new BoardUtils();
         this.context = context;
+
+
+        hint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        // Draw the highlighted cell selection...
+        selected = new Paint();
+        selected.setColor(getResources().getColor(R.color.highlightColor, null));
+
+        // Draw the error Cell, if it exists...
+        error = new Paint();
+        error.setColor(getResources().getColor(R.color.errorHighlightColor, null));
     }
 
     @Override
@@ -167,8 +185,8 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Select Cell at x,y coordinates
      *
-     * @param x
-     * @param y
+     * @param x - x
+     * @param y - y
      */
     public void highlightSelectedArea(int x, int y, int type) {
         selectedXCoordinate = Math.min(Math.max(x, 0), 8);
@@ -198,7 +216,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Show appropriate game dialog.
      */
-    protected void showTouchDialog(int x, int y) {
+    private void showTouchDialog(int x, int y) {
         // Flip X and Y when indexing values array.
         if (pencilModeOn && selectedCellPencilValues != null) {
             PencilQuickActionBar valueBar = new PencilQuickActionBar(this, selectedCellPencilValues);
@@ -214,7 +232,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Determine if chosen value can be placed in location.
      *
-     * @param possibilityChosen
+     * @param possibilityChosen - y
      */
     public void setValueInSelectedCell(int possibilityChosen) {
         boardUtils.setValueAtCell(selectedYCoordinate, selectedXCoordinate, possibilityChosen);
@@ -242,33 +260,26 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         if (!hintCell.isEmpty()) {
-            Paint foreground = new Paint(Paint.ANTI_ALIAS_FLAG);
-            foreground.setColor(getResources().getColor(R.color.errorHighlightColor, null));
-            foreground.setStyle(Style.FILL);
-            foreground.setTextSize(cellHeight * 0.75f);
-            foreground.setTextScaleX(cellWidth / cellHeight);
-            foreground.setTextAlign(Paint.Align.CENTER);
-
+            hint.setColor(getResources().getColor(R.color.errorHighlightColor, null));
+            hint.setStyle(Style.FILL);
+            hint.setTextSize(cellHeight * 0.75f);
+            hint.setTextScaleX(cellWidth / cellHeight);
+            hint.setTextAlign(Paint.Align.CENTER);
             // Draw the number in the center of the tile
-            FontMetrics fm = foreground.getFontMetrics();
+            FontMetrics fm = hint.getFontMetrics();
             // Centering in X: use alignment (and X at midpoint)
             float x = cellWidth / 2;
             // Centering in Y: measure ascent/descent first
             float y = cellHeight / 2 - (fm.ascent + fm.descent) / 2;
 
-            canvas.drawText(hintValue, hintCell.left + x, hintCell.top + y, foreground);
-            foreground.setAlpha(foreground.getAlpha() - 1);
+
+            canvas.drawText(hintValue, hintCell.left + x, hintCell.top + y, hint);
+            hint.setAlpha(hint.getAlpha() - 1);
         }
 
-        // Draw the highlighted cell selection...
-        Paint selected = new Paint();
-        selected.setColor(getResources().getColor(R.color.highlightColor, null));
+
         canvas.drawRect(selectedRow, selected);
         canvas.drawRect(selectedCol, selected);
-
-        // Draw the error Cell, if it exists...
-        Paint error = new Paint();
-        error.setColor(getResources().getColor(R.color.errorHighlightColor, null));
         canvas.drawRect(errorCell, error);
     }
 
@@ -291,7 +302,7 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
         Paint dark = new Paint();
         dark.setColor(getResources().getColor(R.color.majorBoardGridLinesColor, null));
         dark.setStyle(Style.FILL_AND_STROKE);
-        dark.setStrokeWidth(cellWidth / 10);
+        dark.setStrokeWidth(cellWidth / 9);
         dark.setShadowLayer(cellWidth / 30, cellWidth / 30, cellWidth / 30, R.color.highlightColor);
 
         Paint light = new Paint();
@@ -315,15 +326,17 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Draws system placed values placed on the board.
      *
-     * @param canvas
+     * @param canvas -
      */
     private void drawSystemPlacedValues(Canvas canvas) {
         Paint foreground = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground.setColor(getResources().getColor(R.color.systemValueColor, null));
-        foreground.setStyle(Style.FILL);
-        foreground.setTextSize(cellHeight * 0.75f);
+        foreground.setStyle(Style.FILL_AND_STROKE);
+        foreground.setTextSize(cellHeight * 0.55f);
         foreground.setTextScaleX(cellWidth / cellHeight);
         foreground.setTextAlign(Paint.Align.CENTER);
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.alfa_slab_one);
+        foreground.setTypeface(typeface);
 
         // Draw the number in the center of the tile
         FontMetrics fm = foreground.getFontMetrics();
@@ -354,15 +367,8 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
                         if (String.valueOf(value).equals(selectedCellValue)) {
                             canvas.drawRect(new Rect((int) (col * cellWidth), (int) (row * cellHeight), (int) (col * cellWidth + (cellWidth)),
                                     (int) (row * cellHeight + cellHeight)), selectedCellPaint);
-                            // imageCanvas.drawRect(new Rect((int) (col *
-                            // cellWidth), (int) (row * cellHeight), (int) (col
-                            // * cellWidth + (cellWidth)),
-                            // (int) (row * cellHeight + cellHeight)),
-                            // selectedCellPaint);
                         }
                         canvas.drawText(String.valueOf(value), col * cellWidth + x, row * cellHeight + y, foreground);
-                        // imageCanvas.drawText(String.valueOf(value), col *
-                        // cellWidth + x, row * cellHeight + y, foreground);
                     }
                 }
             }
@@ -372,15 +378,17 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Draws User Placed values placed on the board.
      *
-     * @param canvas
+     * @param canvas -
      */
     private void drawUserPlacedValues(Canvas canvas) {
         Paint foreground = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground.setColor(getResources().getColor(R.color.userPlacedValueColor, null));
         foreground.setStyle(Style.FILL);
-        foreground.setTextSize(cellHeight * 0.75f);
+        foreground.setTextSize(cellHeight * 0.55f);
         foreground.setTextScaleX(cellWidth / cellHeight);
         foreground.setTextAlign(Paint.Align.CENTER);
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.alfa_slab_one);
+        foreground.setTypeface(typeface);
 
         // Draw the number in the center of the tile
         FontMetrics fm = foreground.getFontMetrics();
@@ -418,19 +426,21 @@ public class BoardView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Draws only the possibilities that remain in each cell.
      *
-     * @param canvas
+     * @param canvas -
      */
     private void drawPencilValues(Canvas canvas) {
         // Draw the possibilities for empty cells...
         // Define color and style for numbers
         Paint foreground_poss = new Paint(Paint.ANTI_ALIAS_FLAG);
         foreground_poss.setColor(getResources().getColor(R.color.pencilValueColor, null));
-        foreground_poss.setStyle(Style.FILL_AND_STROKE);
-        foreground_poss.setStrokeWidth(cellWidth / 30);
+        foreground_poss.setStyle(Style.FILL);
+        foreground_poss.setStrokeWidth(cellWidth / 50);
         foreground_poss.setTextSize(cellHeight * 0.25f);
         foreground_poss.setTextScaleX(cellWidth / cellHeight);
         foreground_poss.setTextAlign(Paint.Align.CENTER);
         foreground_poss.setStrikeThruText(false);
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.alfa_slab_one);
+        foreground_poss.setTypeface(typeface);
 
         // Centering in X: use alignment (and X at midpoint)
         float x_poss = cellWidth / 3.3f;
